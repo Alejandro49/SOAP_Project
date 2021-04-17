@@ -6,5 +6,5 @@
 
 - Pestaña Window
    - Preferences
-      - Server => Runtime Environmets => Add => Seleccionar Apache Tomcat v9.0 => Next => Finish 
+      - Server => Runtime Environmets => Add => Seleccionar Apache Tomcat v9.0 => Seleccionar carpeta contenida en el proyector => Finish 
 
