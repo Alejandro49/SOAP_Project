@@ -14,7 +14,7 @@
 	
 	2. Abrir Eclipse 
 		- File => Import... => Maven => Existing Maven Projects => Next
-		- Root directory: seleccionar Directotio de la app dentro del repositorio
+		- Root directory: seleccionar Directorio del proyecto (ligaServer) dentro del repositorio
 		- Aparecerá automaticamente el archivo pom.xml detectado
 		- next => finish.
 
