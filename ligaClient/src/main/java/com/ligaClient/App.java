@@ -1,13 +1,16 @@
 package com.ligaClient;
 
-/**
- * Hello world!
- *
- */
+import com.client.generated.CrearLiga;
+import com.client.generated.CrearLigaService;
+import com.client.generated.Equipo;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        CrearLigaService servicio = new CrearLigaService();
+        CrearLiga creacionLiga = servicio.getCrearLigaPort();
+        Equipo equipo = creacionLiga.crearEquipo();
+        System.out.println(equipo);
     }
 }
