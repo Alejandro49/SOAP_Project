@@ -5,20 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para crearLiga complex type.
+ * <p>Clase Java para liga complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="crearLiga"&gt;
+ * &lt;complexType name="liga"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="ligaNueva" type="{http://liga.sw.com/}equipo" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="Equipo" type="{http://liga.sw.com/}equipo" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,26 +29,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "crearLiga", propOrder = {
-    "ligaNueva"
+@XmlType(name = "liga", propOrder = {
+    "equipo"
 })
-public class CrearLiga {
+public class Liga {
 
-    protected List<Equipo> ligaNueva;
+    @XmlElement(name = "Equipo")
+    protected List<Equipo> equipo;
 
     /**
-     * Gets the value of the ligaNueva property.
+     * Gets the value of the equipo property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the ligaNueva property.
+     * This is why there is not a <CODE>set</CODE> method for the equipo property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getLigaNueva().add(newItem);
+     *    getEquipo().add(newItem);
      * </pre>
      * 
      * 
@@ -57,11 +59,11 @@ public class CrearLiga {
      * 
      * 
      */
-    public List<Equipo> getLigaNueva() {
-        if (ligaNueva == null) {
-            ligaNueva = new ArrayList<Equipo>();
+    public List<Equipo> getEquipo() {
+        if (equipo == null) {
+            equipo = new ArrayList<Equipo>();
         }
-        return this.ligaNueva;
+        return this.equipo;
     }
 
 }

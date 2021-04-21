@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Equipo nombre="Real Madrid" pais="España">
+    <titulos>92</titulos>
+    <entrenador>Zinedine Zidane</entrenador>
+    <presidente>Florentino Pérez</presidente>
+</Equipo>

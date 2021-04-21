@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para crearEquipoResponse complex type.
+ * <p>Clase Java para exportarEquipoResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="crearEquipoResponse"&gt;
+ * &lt;complexType name="exportarEquipoResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://liga.sw.com/}equipo" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,35 +27,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "crearEquipoResponse", propOrder = {
+@XmlType(name = "exportarEquipoResponse", propOrder = {
     "_return"
 })
-public class CrearEquipoResponse {
+public class ExportarEquipoResponse {
 
     @XmlElement(name = "return")
-    protected Equipo _return;
+    protected boolean _return;
 
     /**
      * Obtiene el valor de la propiedad return.
      * 
-     * @return
-     *     possible object is
-     *     {@link Equipo }
-     *     
      */
-    public Equipo getReturn() {
+    public boolean isReturn() {
         return _return;
     }
 
     /**
      * Define el valor de la propiedad return.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Equipo }
-     *     
      */
-    public void setReturn(Equipo value) {
+    public void setReturn(boolean value) {
         this._return = value;
     }
 

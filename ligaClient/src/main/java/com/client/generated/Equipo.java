@@ -45,11 +45,6 @@ public class Equipo {
     protected String nombre;
     @XmlAttribute(name = "pais")
     protected String pais;
-    
-    public String toString() {
-		return "Equipo [Nombre=" + nombre + ", Pais=" + pais + ", Titulos=" + titulos + ", Entrenador="
-				+ entrenador + ", Presidente=" + presidente + "]";
-	}
 
     /**
      * Obtiene el valor de la propiedad titulos.

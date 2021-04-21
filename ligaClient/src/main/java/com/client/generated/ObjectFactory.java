@@ -25,10 +25,23 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Equipo_QNAME = new QName("http://liga.sw.com/", "Equipo");
-    private final static QName _CrearEquipo_QNAME = new QName("http://liga.sw.com/", "crearEquipo");
-    private final static QName _CrearEquipoResponse_QNAME = new QName("http://liga.sw.com/", "crearEquipoResponse");
-    private final static QName _Hello_QNAME = new QName("http://liga.sw.com/", "hello");
-    private final static QName _HelloResponse_QNAME = new QName("http://liga.sw.com/", "helloResponse");
+    private final static QName _Liga_QNAME = new QName("http://liga.sw.com/", "Liga");
+    private final static QName _AnadirEquipo_QNAME = new QName("http://liga.sw.com/", "anadirEquipo");
+    private final static QName _AnadirEquipoResponse_QNAME = new QName("http://liga.sw.com/", "anadirEquipoResponse");
+    private final static QName _CrearLiga_QNAME = new QName("http://liga.sw.com/", "crearLiga");
+    private final static QName _CrearLigaResponse_QNAME = new QName("http://liga.sw.com/", "crearLigaResponse");
+    private final static QName _ExportarEquipo_QNAME = new QName("http://liga.sw.com/", "exportarEquipo");
+    private final static QName _ExportarEquipoResponse_QNAME = new QName("http://liga.sw.com/", "exportarEquipoResponse");
+    private final static QName _ExportarLiga_QNAME = new QName("http://liga.sw.com/", "exportarLiga");
+    private final static QName _ExportarLigaResponse_QNAME = new QName("http://liga.sw.com/", "exportarLigaResponse");
+    private final static QName _ImportarEquipo_QNAME = new QName("http://liga.sw.com/", "importarEquipo");
+    private final static QName _ImportarEquipoResponse_QNAME = new QName("http://liga.sw.com/", "importarEquipoResponse");
+    private final static QName _ImportarLiga_QNAME = new QName("http://liga.sw.com/", "importarLiga");
+    private final static QName _ImportarLigaResponse_QNAME = new QName("http://liga.sw.com/", "importarLigaResponse");
+    private final static QName _ObtenerEquipo_QNAME = new QName("http://liga.sw.com/", "obtenerEquipo");
+    private final static QName _ObtenerEquipoResponse_QNAME = new QName("http://liga.sw.com/", "obtenerEquipoResponse");
+    private final static QName _ObtenerLiga_QNAME = new QName("http://liga.sw.com/", "obtenerLiga");
+    private final static QName _ObtenerLigaResponse_QNAME = new QName("http://liga.sw.com/", "obtenerLigaResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.client.generated
@@ -46,35 +59,139 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CrearEquipo }
+     * Create an instance of {@link Liga }
      * 
      */
-    public CrearEquipo createCrearEquipo() {
-        return new CrearEquipo();
+    public Liga createLiga() {
+        return new Liga();
     }
 
     /**
-     * Create an instance of {@link CrearEquipoResponse }
+     * Create an instance of {@link AnadirEquipo }
      * 
      */
-    public CrearEquipoResponse createCrearEquipoResponse() {
-        return new CrearEquipoResponse();
+    public AnadirEquipo createAnadirEquipo() {
+        return new AnadirEquipo();
     }
 
     /**
-     * Create an instance of {@link Hello }
+     * Create an instance of {@link AnadirEquipoResponse }
      * 
      */
-    public Hello createHello() {
-        return new Hello();
+    public AnadirEquipoResponse createAnadirEquipoResponse() {
+        return new AnadirEquipoResponse();
     }
 
     /**
-     * Create an instance of {@link HelloResponse }
+     * Create an instance of {@link CrearLiga }
      * 
      */
-    public HelloResponse createHelloResponse() {
-        return new HelloResponse();
+    public CrearLiga createCrearLiga() {
+        return new CrearLiga();
+    }
+
+    /**
+     * Create an instance of {@link CrearLigaResponse }
+     * 
+     */
+    public CrearLigaResponse createCrearLigaResponse() {
+        return new CrearLigaResponse();
+    }
+
+    /**
+     * Create an instance of {@link ExportarEquipo }
+     * 
+     */
+    public ExportarEquipo createExportarEquipo() {
+        return new ExportarEquipo();
+    }
+
+    /**
+     * Create an instance of {@link ExportarEquipoResponse }
+     * 
+     */
+    public ExportarEquipoResponse createExportarEquipoResponse() {
+        return new ExportarEquipoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ExportarLiga }
+     * 
+     */
+    public ExportarLiga createExportarLiga() {
+        return new ExportarLiga();
+    }
+
+    /**
+     * Create an instance of {@link ExportarLigaResponse }
+     * 
+     */
+    public ExportarLigaResponse createExportarLigaResponse() {
+        return new ExportarLigaResponse();
+    }
+
+    /**
+     * Create an instance of {@link ImportarEquipo }
+     * 
+     */
+    public ImportarEquipo createImportarEquipo() {
+        return new ImportarEquipo();
+    }
+
+    /**
+     * Create an instance of {@link ImportarEquipoResponse }
+     * 
+     */
+    public ImportarEquipoResponse createImportarEquipoResponse() {
+        return new ImportarEquipoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ImportarLiga }
+     * 
+     */
+    public ImportarLiga createImportarLiga() {
+        return new ImportarLiga();
+    }
+
+    /**
+     * Create an instance of {@link ImportarLigaResponse }
+     * 
+     */
+    public ImportarLigaResponse createImportarLigaResponse() {
+        return new ImportarLigaResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerEquipo }
+     * 
+     */
+    public ObtenerEquipo createObtenerEquipo() {
+        return new ObtenerEquipo();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerEquipoResponse }
+     * 
+     */
+    public ObtenerEquipoResponse createObtenerEquipoResponse() {
+        return new ObtenerEquipoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerLiga }
+     * 
+     */
+    public ObtenerLiga createObtenerLiga() {
+        return new ObtenerLiga();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerLigaResponse }
+     * 
+     */
+    public ObtenerLigaResponse createObtenerLigaResponse() {
+        return new ObtenerLigaResponse();
     }
 
     /**
@@ -91,55 +208,224 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CrearEquipo }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Liga }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CrearEquipo }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link Liga }{@code >}
      */
-    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearEquipo")
-    public JAXBElement<CrearEquipo> createCrearEquipo(CrearEquipo value) {
-        return new JAXBElement<CrearEquipo>(_CrearEquipo_QNAME, CrearEquipo.class, null, value);
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "Liga")
+    public JAXBElement<Liga> createLiga(Liga value) {
+        return new JAXBElement<Liga>(_Liga_QNAME, Liga.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CrearEquipoResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AnadirEquipo }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link CrearEquipoResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link AnadirEquipo }{@code >}
      */
-    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearEquipoResponse")
-    public JAXBElement<CrearEquipoResponse> createCrearEquipoResponse(CrearEquipoResponse value) {
-        return new JAXBElement<CrearEquipoResponse>(_CrearEquipoResponse_QNAME, CrearEquipoResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "anadirEquipo")
+    public JAXBElement<AnadirEquipo> createAnadirEquipo(AnadirEquipo value) {
+        return new JAXBElement<AnadirEquipo>(_AnadirEquipo_QNAME, AnadirEquipo.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Hello }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AnadirEquipoResponse }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Hello }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link AnadirEquipoResponse }{@code >}
      */
-    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "hello")
-    public JAXBElement<Hello> createHello(Hello value) {
-        return new JAXBElement<Hello>(_Hello_QNAME, Hello.class, null, value);
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "anadirEquipoResponse")
+    public JAXBElement<AnadirEquipoResponse> createAnadirEquipoResponse(AnadirEquipoResponse value) {
+        return new JAXBElement<AnadirEquipoResponse>(_AnadirEquipoResponse_QNAME, AnadirEquipoResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HelloResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearLiga }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link HelloResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link CrearLiga }{@code >}
      */
-    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "helloResponse")
-    public JAXBElement<HelloResponse> createHelloResponse(HelloResponse value) {
-        return new JAXBElement<HelloResponse>(_HelloResponse_QNAME, HelloResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearLiga")
+    public JAXBElement<CrearLiga> createCrearLiga(CrearLiga value) {
+        return new JAXBElement<CrearLiga>(_CrearLiga_QNAME, CrearLiga.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearLigaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CrearLigaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearLigaResponse")
+    public JAXBElement<CrearLigaResponse> createCrearLigaResponse(CrearLigaResponse value) {
+        return new JAXBElement<CrearLigaResponse>(_CrearLigaResponse_QNAME, CrearLigaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExportarEquipo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ExportarEquipo }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "exportarEquipo")
+    public JAXBElement<ExportarEquipo> createExportarEquipo(ExportarEquipo value) {
+        return new JAXBElement<ExportarEquipo>(_ExportarEquipo_QNAME, ExportarEquipo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExportarEquipoResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ExportarEquipoResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "exportarEquipoResponse")
+    public JAXBElement<ExportarEquipoResponse> createExportarEquipoResponse(ExportarEquipoResponse value) {
+        return new JAXBElement<ExportarEquipoResponse>(_ExportarEquipoResponse_QNAME, ExportarEquipoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExportarLiga }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ExportarLiga }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "exportarLiga")
+    public JAXBElement<ExportarLiga> createExportarLiga(ExportarLiga value) {
+        return new JAXBElement<ExportarLiga>(_ExportarLiga_QNAME, ExportarLiga.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExportarLigaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ExportarLigaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "exportarLigaResponse")
+    public JAXBElement<ExportarLigaResponse> createExportarLigaResponse(ExportarLigaResponse value) {
+        return new JAXBElement<ExportarLigaResponse>(_ExportarLigaResponse_QNAME, ExportarLigaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportarEquipo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ImportarEquipo }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "importarEquipo")
+    public JAXBElement<ImportarEquipo> createImportarEquipo(ImportarEquipo value) {
+        return new JAXBElement<ImportarEquipo>(_ImportarEquipo_QNAME, ImportarEquipo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportarEquipoResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ImportarEquipoResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "importarEquipoResponse")
+    public JAXBElement<ImportarEquipoResponse> createImportarEquipoResponse(ImportarEquipoResponse value) {
+        return new JAXBElement<ImportarEquipoResponse>(_ImportarEquipoResponse_QNAME, ImportarEquipoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportarLiga }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ImportarLiga }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "importarLiga")
+    public JAXBElement<ImportarLiga> createImportarLiga(ImportarLiga value) {
+        return new JAXBElement<ImportarLiga>(_ImportarLiga_QNAME, ImportarLiga.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportarLigaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ImportarLigaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "importarLigaResponse")
+    public JAXBElement<ImportarLigaResponse> createImportarLigaResponse(ImportarLigaResponse value) {
+        return new JAXBElement<ImportarLigaResponse>(_ImportarLigaResponse_QNAME, ImportarLigaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerEquipo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ObtenerEquipo }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "obtenerEquipo")
+    public JAXBElement<ObtenerEquipo> createObtenerEquipo(ObtenerEquipo value) {
+        return new JAXBElement<ObtenerEquipo>(_ObtenerEquipo_QNAME, ObtenerEquipo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerEquipoResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ObtenerEquipoResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "obtenerEquipoResponse")
+    public JAXBElement<ObtenerEquipoResponse> createObtenerEquipoResponse(ObtenerEquipoResponse value) {
+        return new JAXBElement<ObtenerEquipoResponse>(_ObtenerEquipoResponse_QNAME, ObtenerEquipoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerLiga }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ObtenerLiga }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "obtenerLiga")
+    public JAXBElement<ObtenerLiga> createObtenerLiga(ObtenerLiga value) {
+        return new JAXBElement<ObtenerLiga>(_ObtenerLiga_QNAME, ObtenerLiga.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerLigaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ObtenerLigaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "obtenerLigaResponse")
+    public JAXBElement<ObtenerLigaResponse> createObtenerLigaResponse(ObtenerLigaResponse value) {
+        return new JAXBElement<ObtenerLigaResponse>(_ObtenerLigaResponse_QNAME, ObtenerLigaResponse.class, null, value);
     }
 
 }

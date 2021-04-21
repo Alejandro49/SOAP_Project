@@ -99,7 +99,7 @@
 			</executions>
 			<configuration>
 				<wsdlUrls>
-					<wsdlUrl>http://localhost:8080/ligaServer/ws/crearLiga?wsdl</wsdlUrl>
+					<wsdlUrl>http://localhost:8080/ligaServer/ws/ligaSOAP?wsdl</wsdlUrl>
 				</wsdlUrls>
 				<keep>true</keep>
 				<packageName>com.client.generated</packageName>
