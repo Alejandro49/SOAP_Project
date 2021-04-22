@@ -1,13 +1,28 @@
 
 <Liga>
-    <Equipo nombre="Real Madrid" pais="España">
-        <titulos>92</titulos>
-        <entrenador>Zinedine Zidane</entrenador>
-        <presidente>Florentino Pérez</presidente>
-    </Equipo>
-    <Equipo nombre="Paris Saint-Germain" pais="Francia">
-        <titulos>42</titulos>
-        <entrenador>Mauricio Pochettino</entrenador>
-        <presidente>Nasser Al-Khelaïfi</presidente>
-    </Equipo>
+	<Equipo nombre="Manchester United FC" pais="Inglaterra">
+		<titulos>66</titulos>
+		<entrenador>Ole Gunnar Solskjær</entrenador>
+		<presidente>Joel Glazer</presidente>
+	</Equipo>
+    <Equipo nombre="Chelsea FC" pais="Inglaterra">
+		<titulos>33</titulos>
+		<entrenador>Thomas Tuchel</entrenador>
+		<presidente>Bruce Buck</presidente>
+	</Equipo>
+	<Equipo nombre="Tottenham Hotspur FC" pais="Inglaterra">
+		<titulos>27</titulos>
+		<entrenador>José Mourinho</entrenador>
+		<presidente>Daniel Levy</presidente>
+	</Equipo>
+	<Equipo nombre="Manchester City FC" pais="Inglaterra">
+		<titulos>26</titulos>
+		<entrenador>Pep Guardiola</entrenador>
+		<presidente>Khaldoon Mubarak</presidente>
+	</Equipo>
+	<Equipo nombre="Leicester City FC" pais="Inglaterra">
+		<titulos>5</titulos>
+		<entrenador>Brendan Rodgers</entrenador>
+		<presidente>Jorge Berni</presidente>
+	</Equipo>
 </Liga>

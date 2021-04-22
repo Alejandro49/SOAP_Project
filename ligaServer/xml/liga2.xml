@@ -1,13 +1,23 @@
 
 <Liga>
-    <Equipo nombre="Real Madrid" pais="España">
-        <titulos>92</titulos>
-        <entrenador>Zinedine Zidane</entrenador>
-        <presidente>Florentino Pérez</presidente>
-    </Equipo>
     <Equipo nombre="Paris Saint-Germain" pais="Francia">
         <titulos>42</titulos>
         <entrenador>Mauricio Pochettino</entrenador>
         <presidente>Nasser Al-Khelaïfi</presidente>
     </Equipo>
+	<Equipo nombre="Olympique de Lyon" pais="Francia">
+		<titulos>22</titulos>
+		<entrenador>Rudi García</entrenador>
+		<presidente>Jean-Michel Aulas</presidente>
+	</Equipo>
+	<Equipo nombre="AS Monaco FC" pais="Francia">
+		<titulos>22</titulos>
+		<entrenador>Niko Kovač</entrenador>
+		<presidente>Dmitri Rybolóvlev</presidente>
+	</Equipo>
+	<Equipo nombre="Lille Olympique Sporting Club" pais="Francia">
+		<titulos>15</titulos>
+		<entrenador>Christophe Galtier</entrenador>
+		<presidente>Olivier Létang</presidente>
+	</Equipo>
 </Liga>

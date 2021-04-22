@@ -5,9 +5,29 @@
         <entrenador>Zinedine Zidane</entrenador>
         <presidente>Florentino Pérez</presidente>
     </Equipo>
-    <Equipo nombre="Paris Saint-Germain" pais="Francia">
-        <titulos>42</titulos>
-        <entrenador>Mauricio Pochettino</entrenador>
-        <presidente>Nasser Al-Khelaïfi</presidente>
-    </Equipo>
+	<Equipo nombre="Atlético de Madrid" pais="España">
+		<titulos>32</titulos>
+		<entrenador>Diego Simeone</entrenador>
+		<presidente>Enrique Cerezo</presidente>
+	</Equipo>
+	<Equipo nombre="Valencia FC" pais="España">
+		<titulos>23</titulos>
+		<entrenador>Javi Gracia</entrenador>
+		<presidente>Anil Murthy</presidente>
+	</Equipo>
+    <Equipo nombre="Sevilla FC" pais="España">
+		<titulos>14</titulos>
+		<entrenador>Julen Lopetegui</entrenador>
+		<presidente>José Castro Carmona</presidente>
+	</Equipo>
+	<Equipo nombre="Real Sociedad FC" pais="España">
+		<titulos>9</titulos>
+		<entrenador>Imanol Alguacil</entrenador>
+		<presidente>Jokin Aperribay</presidente>
+	</Equipo>
+	<Equipo nombre="Villarreal FC" pais="España">
+		<titulos>2</titulos>
+		<entrenador>Unai Emery</entrenador>
+		<presidente>Fernando Roig Alfonso</presidente>
+	</Equipo>
 </Liga>
