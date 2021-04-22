@@ -79,7 +79,7 @@ public class PanelControl {
 			cargarLigaPredefinida();
 		break;
 		case 2: //Importar liga
-			unmarshallLiga();		   
+			importarLiga();		   
 		break;
 		case 3: // Exportar liga
 			marshallLiga();
@@ -271,24 +271,27 @@ public class PanelControl {
 		   }
 	}
 	
-	private void unmarshallLiga() { //sc7
+	private void importarLiga() { //sc7
 		sc7 = new Scanner(System.in);
-		System.out.println("Introduzca el nombre del fichero de la liga a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml)");
+		System.out.println("Tenemos las siguientes ligas almacenadas en la base de datos: ");
+		System.out.println("liga1.xml");
+		System.out.println("liga2.xml");
+		System.out.println("liga3.xml");
+		System.out.println("ligaExportada.xml  (En caso de que hayas exportado una liga anteriormente)");
+		System.out.println("Introduzca el nombre del fichero de la liga a importar (Nombre_Fichero.xml)");
 		String nombreFichero = sc7.nextLine();
-		try {
-			ligaXML.importarLiga(nombreFichero);
-		} catch (JAXBException e) {
-			e.printStackTrace();
-			System.out.println("Se ha producido un error inesperado");
-			return;
-		} catch (IllegalArgumentException ex) {
-			System.out.println("No se ha encontrado el archivo");
+		
+		if (ligaSOAP.importarLiga(nombreFichero)) {
+			Liga ligaImportada = ligaSOAP.obtenerLiga();
+			liga = ligaImportada;
+			System.out.println("Liga importada correctamente");
+			System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
 			esperar(2);
-			return;
+		} else {
+			System.out.println("Error 500. Fatal Sever Error");
+			esperar(2);
 		}
 		
-		System.out.println("Liga importada correctamente");
-		esperar(2);
 	}
 	
 	
