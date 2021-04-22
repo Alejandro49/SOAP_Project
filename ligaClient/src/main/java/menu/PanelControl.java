@@ -82,7 +82,7 @@ public class PanelControl {
 			importarLiga();		   
 		break;
 		case 3: // Exportar liga
-			marshallLiga();
+			exportarLiga();
 		break;
 		case 4: //Crear liga
 			crearLiga();
@@ -254,21 +254,17 @@ public class PanelControl {
 		return true;
 	}
 
-	private void marshallLiga() {
-		System.out.println("Exportando liga al archivo ./xml/ligaExportada.xml");
-		try {
-			ligaXML.exportarLiga(ligaXML.getLiga());
-			System.out.println("Liga exportada con �xito");
+	private void exportarLiga() {
+		System.out.println("Exportando liga como archivo: \"ligaExportada.xml\" ");
+		
+		if (ligaSOAP.exportarLiga()) {
+			System.out.println("Liga exportada correctamente");
 			esperar(2);
-		   } catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Se ha producido un error inesperado");
-			esperar(1);
-		   } catch (IllegalArgumentException e) {
-			   System.out.println("Liga actualmente inexistente, importala primero, o a�ade equipos por consola");
-			   esperar(2);
-		   }
+		} else {
+			System.out.println("Error, Liga vacía, debes importarla o crearla primero");
+			esperar(2);
+		}
+		
 	}
 	
 	private void importarLiga() { //sc7
