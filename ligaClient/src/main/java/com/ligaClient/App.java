@@ -1,11 +1,24 @@
 package com.ligaClient;
 
+import menu.PanelControl;
 
-
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+	
+	private static PanelControl panel = new PanelControl();
+	
+    public static void main( String[] args )  {
+    	
+    	System.out.println("Bienvenido a la Superliga... cargando panel de control");
+		esperar(3);
+		panel.cargarPanel();
         
     }
+    
+    public static void esperar(int segundos){
+        try {
+            Thread.sleep(segundos * 1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+    }   
 }

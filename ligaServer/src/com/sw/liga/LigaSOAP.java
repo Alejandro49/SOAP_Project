@@ -101,6 +101,19 @@ public class LigaSOAP {
 		}
 	}
 	
+	@WebMethod (operationName = "inicializarLigaPredefinida")
+	public Liga cargarLigaPredefinida() {
+		try {
+			ligaXML.importarLigaPredefinida();
+			liga = ligaXML.getLiga();
+			return this.liga;
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 	
 	

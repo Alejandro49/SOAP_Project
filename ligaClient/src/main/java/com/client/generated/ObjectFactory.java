@@ -38,6 +38,8 @@ public class ObjectFactory {
     private final static QName _ImportarEquipoResponse_QNAME = new QName("http://liga.sw.com/", "importarEquipoResponse");
     private final static QName _ImportarLiga_QNAME = new QName("http://liga.sw.com/", "importarLiga");
     private final static QName _ImportarLigaResponse_QNAME = new QName("http://liga.sw.com/", "importarLigaResponse");
+    private final static QName _InicializarLigaPredefinida_QNAME = new QName("http://liga.sw.com/", "inicializarLigaPredefinida");
+    private final static QName _InicializarLigaPredefinidaResponse_QNAME = new QName("http://liga.sw.com/", "inicializarLigaPredefinidaResponse");
     private final static QName _ObtenerEquipo_QNAME = new QName("http://liga.sw.com/", "obtenerEquipo");
     private final static QName _ObtenerEquipoResponse_QNAME = new QName("http://liga.sw.com/", "obtenerEquipoResponse");
     private final static QName _ObtenerLiga_QNAME = new QName("http://liga.sw.com/", "obtenerLiga");
@@ -160,6 +162,22 @@ public class ObjectFactory {
      */
     public ImportarLigaResponse createImportarLigaResponse() {
         return new ImportarLigaResponse();
+    }
+
+    /**
+     * Create an instance of {@link InicializarLigaPredefinida }
+     * 
+     */
+    public InicializarLigaPredefinida createInicializarLigaPredefinida() {
+        return new InicializarLigaPredefinida();
+    }
+
+    /**
+     * Create an instance of {@link InicializarLigaPredefinidaResponse }
+     * 
+     */
+    public InicializarLigaPredefinidaResponse createInicializarLigaPredefinidaResponse() {
+        return new InicializarLigaPredefinidaResponse();
     }
 
     /**
@@ -374,6 +392,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://liga.sw.com/", name = "importarLigaResponse")
     public JAXBElement<ImportarLigaResponse> createImportarLigaResponse(ImportarLigaResponse value) {
         return new JAXBElement<ImportarLigaResponse>(_ImportarLigaResponse_QNAME, ImportarLigaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InicializarLigaPredefinida }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link InicializarLigaPredefinida }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "inicializarLigaPredefinida")
+    public JAXBElement<InicializarLigaPredefinida> createInicializarLigaPredefinida(InicializarLigaPredefinida value) {
+        return new JAXBElement<InicializarLigaPredefinida>(_InicializarLigaPredefinida_QNAME, InicializarLigaPredefinida.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InicializarLigaPredefinidaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link InicializarLigaPredefinidaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "inicializarLigaPredefinidaResponse")
+    public JAXBElement<InicializarLigaPredefinidaResponse> createInicializarLigaPredefinidaResponse(InicializarLigaPredefinidaResponse value) {
+        return new JAXBElement<InicializarLigaPredefinidaResponse>(_InicializarLigaPredefinidaResponse_QNAME, InicializarLigaPredefinidaResponse.class, null, value);
     }
 
     /**

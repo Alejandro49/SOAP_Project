@@ -27,42 +27,15 @@ public interface LigaSOAP {
 
     /**
      * 
-     * @return
-     *     returns com.client.generated.Liga
+     * @param ligaNueva
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ObtenerLiga")
-    @ResponseWrapper(localName = "obtenerLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ObtenerLigaResponse")
-    @Action(input = "http://liga.sw.com/LigaSOAP/obtenerLigaRequest", output = "http://liga.sw.com/LigaSOAP/obtenerLigaResponse")
-    public Liga obtenerLiga();
-
-    /**
-     * 
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "exportarLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ExportarLiga")
-    @ResponseWrapper(localName = "exportarLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ExportarLigaResponse")
-    @Action(input = "http://liga.sw.com/LigaSOAP/exportarLigaRequest", output = "http://liga.sw.com/LigaSOAP/exportarLigaResponse")
-    public boolean exportarLiga();
-
-    /**
-     * 
-     * @param nombreFichero
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "importarLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarLiga")
-    @ResponseWrapper(localName = "importarLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarLigaResponse")
-    @Action(input = "http://liga.sw.com/LigaSOAP/importarLigaRequest", output = "http://liga.sw.com/LigaSOAP/importarLigaResponse")
-    public boolean importarLiga(
-        @WebParam(name = "nombreFichero", targetNamespace = "")
-        String nombreFichero);
+    @RequestWrapper(localName = "crearLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.CrearLiga")
+    @ResponseWrapper(localName = "crearLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.CrearLigaResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/crearLigaRequest", output = "http://liga.sw.com/LigaSOAP/crearLigaResponse")
+    public void crearLiga(
+        @WebParam(name = "ligaNueva", targetNamespace = "")
+        List<Equipo> ligaNueva);
 
     /**
      * 
@@ -96,30 +69,15 @@ public interface LigaSOAP {
 
     /**
      * 
-     * @param nombreFichero
      * @return
      *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "importarEquipo", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarEquipo")
-    @ResponseWrapper(localName = "importarEquipoResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarEquipoResponse")
-    @Action(input = "http://liga.sw.com/LigaSOAP/importarEquipoRequest", output = "http://liga.sw.com/LigaSOAP/importarEquipoResponse")
-    public boolean importarEquipo(
-        @WebParam(name = "nombreFichero", targetNamespace = "")
-        String nombreFichero);
-
-    /**
-     * 
-     * @param ligaNueva
-     */
-    @WebMethod
-    @RequestWrapper(localName = "crearLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.CrearLiga")
-    @ResponseWrapper(localName = "crearLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.CrearLigaResponse")
-    @Action(input = "http://liga.sw.com/LigaSOAP/crearLigaRequest", output = "http://liga.sw.com/LigaSOAP/crearLigaResponse")
-    public void crearLiga(
-        @WebParam(name = "ligaNueva", targetNamespace = "")
-        List<Equipo> ligaNueva);
+    @RequestWrapper(localName = "exportarLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ExportarLiga")
+    @ResponseWrapper(localName = "exportarLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ExportarLigaResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/exportarLigaRequest", output = "http://liga.sw.com/LigaSOAP/exportarLigaResponse")
+    public boolean exportarLiga();
 
     /**
      * 
@@ -135,5 +93,59 @@ public interface LigaSOAP {
     public boolean exportarEquipo(
         @WebParam(name = "equipoAExportar", targetNamespace = "")
         Equipo equipoAExportar);
+
+    /**
+     * 
+     * @param nombreFichero
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "importarLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarLiga")
+    @ResponseWrapper(localName = "importarLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarLigaResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/importarLigaRequest", output = "http://liga.sw.com/LigaSOAP/importarLigaResponse")
+    public boolean importarLiga(
+        @WebParam(name = "nombreFichero", targetNamespace = "")
+        String nombreFichero);
+
+    /**
+     * 
+     * @return
+     *     returns com.client.generated.Liga
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerLiga", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ObtenerLiga")
+    @ResponseWrapper(localName = "obtenerLigaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ObtenerLigaResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/obtenerLigaRequest", output = "http://liga.sw.com/LigaSOAP/obtenerLigaResponse")
+    public Liga obtenerLiga();
+
+    /**
+     * 
+     * @param nombreFichero
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "importarEquipo", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarEquipo")
+    @ResponseWrapper(localName = "importarEquipoResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.ImportarEquipoResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/importarEquipoRequest", output = "http://liga.sw.com/LigaSOAP/importarEquipoResponse")
+    public boolean importarEquipo(
+        @WebParam(name = "nombreFichero", targetNamespace = "")
+        String nombreFichero);
+
+    /**
+     * 
+     * @return
+     *     returns com.client.generated.Liga
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "inicializarLigaPredefinida", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.InicializarLigaPredefinida")
+    @ResponseWrapper(localName = "inicializarLigaPredefinidaResponse", targetNamespace = "http://liga.sw.com/", className = "com.client.generated.InicializarLigaPredefinidaResponse")
+    @Action(input = "http://liga.sw.com/LigaSOAP/inicializarLigaPredefinidaRequest", output = "http://liga.sw.com/LigaSOAP/inicializarLigaPredefinidaResponse")
+    public Liga inicializarLigaPredefinida();
 
 }
