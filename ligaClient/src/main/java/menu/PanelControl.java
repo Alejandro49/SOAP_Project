@@ -189,7 +189,7 @@ public class PanelControl {
 		}
 	}
 	
-	private void crearLiga() {
+	private void crearLiga() {  // voy por aquí
 		Liga liga = new Liga(); 
 		System.out.println("Inserte los equipos de forma manual");
 		esperar(2);
