@@ -141,41 +141,56 @@ public class PanelControl {
 		
 		cargarPanel();
 	}
-
-
-	/*private void borrarEquipo() {
-		if (ligaXML.getLiga() == null) {
-			System.out.println("Liga inexistente.");
+	
+	private void cargarLigaPredefinida() {
+		
+		System.out.println("cargando ligaPredefinida.xml...");
+		esperar(2);
+		Liga liga = ligaSOAP.inicializarLigaPredefinida();
+		if (liga == null) {
+			System.out.println("Error del servidor (500)");
 			esperar(2);
 		} else {
-			sc6 = new Scanner(System.in);
-			System.out.println("Introduzca el nombre del equipo a borrar");
-			String nombre = sc6.nextLine();
-			boolean borrado = ligaXML.getLiga().removeEquipo(nombre);
-			if (borrado==true) {
-				System.out.println("Equipo eliminado correctamente");
-				esperar(2);
-			} else {
-				System.out.println("No existe un equipo con ese nombre en la liga");
-				esperar(2);
-			}
+			System.out.println("Liga Predefinida cargada con éxito");
+			System.out.println("Elija la opción 5 para ver los equipos que conforman la liga");
+			esperar(2);
 		}
-	} */
-
-	private void validarLigaConDTD() {
-		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
-		System.out.println("El documento debe de estar en la carpeta ./xml/archivo.xml");
-		System.out.println("Puede escribir si lo desea nuestro archivo por defecto para dtd. Escriba \"ligaDTD.xml\" para validar"
-				+ " nuestra liga por defecto");
-	//	validadorDTD = new CheckDTD();
-		sc5 = new Scanner(System.in);
-		String nombreArchivo = sc5.nextLine();
-	//	validadorDTD.validarLiga(nombreArchivo);
-		esperar(3);
 	}
-
+	
+	private void importarLiga() { //sc7
+		sc7 = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero de la liga a importar (Nombre_Fichero.xml)");
+		String nombreFichero = sc7.nextLine();
+		if (ligaSOAP.importarLiga(nombreFichero)) {
+			System.out.println("Liga importada correctamente");
+			System.out.println("Elija la opción 5 para ver los equipos que conforman la liga");
+			esperar(2);
+		} else {
+			String mensaje = "Archivo: \"" + nombreFichero + "\" no encontrado. Asegurese de escribir correctamente el nombre del archivo";
+			System.out.println(mensaje);
+			esperar(3);
+		}	
+	}
+	
+	private void exportarLiga() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero en el que se exportará la liga");
+		String nombreFichero = sc.nextLine();
+		int response = ligaSOAP.exportarLiga(nombreFichero);
+		if (response == -1) {
+			System.out.println("Error, Liga vacía, debes importarla o crearla primero");
+			esperar(2);
+		} else if (response == 0) {
+			System.out.println("Error del servidor (500)");
+			esperar(2);
+		} else {
+			String mensaje = "Liga exportada correctamente como archivo: \"" + nombreFichero + ".xml\"";
+			esperar(2);
+		}
+	}
+	
 	private void crearLiga() {
-		Liga liga = new Liga(); //liga vac�a inicialmente
+		Liga liga = new Liga(); 
 		System.out.println("Inserte los equipos de forma manual");
 		esperar(2);
 		String respuesta = "";
@@ -209,67 +224,6 @@ public class PanelControl {
 		//ligaXML.setLiga(liga);
 	}
 	
-	
-
-	
-
-	private void exportarLiga() {
-		System.out.println("Exportando liga como archivo: \"ligaExportada.xml\" ");
-		
-		if (ligaSOAP.exportarLiga()) {
-			System.out.println("Liga exportada correctamente");
-			esperar(2);
-		} else {
-			System.out.println("Error, Liga vacía, debes importarla o crearla primero");
-			esperar(2);
-		}
-		
-	}
-	
-	private void importarLiga() { //sc7
-		sc7 = new Scanner(System.in);
-		System.out.println("Tenemos las siguientes ligas almacenadas en la base de datos: ");
-		System.out.println("liga1.xml");
-		System.out.println("liga2.xml");
-		System.out.println("liga3.xml");
-		System.out.println("ligaExportada.xml  (En caso de que hayas exportado una liga anteriormente)");
-		System.out.println("Introduzca el nombre del fichero de la liga a importar (Nombre_Fichero.xml)");
-		String nombreFichero = sc7.nextLine();
-		
-		if (ligaSOAP.importarLiga(nombreFichero)) {
-			Liga ligaImportada = ligaSOAP.obtenerLiga();
-			//liga = ligaImportada;
-			System.out.println("Liga importada correctamente");
-			System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
-			esperar(2);
-		} else {
-			System.out.println("Error 500. Fatal Sever Error");
-			esperar(2);
-		}
-		
-	}
-	
-	
-
-	private void cargarLigaPredefinida() {
-		
-		System.out.println("Inicializado ligaPredefinida.xml");
-		ligaDao.setLiga(ligaSOAP.inicializarLigaPredefinida()); 
-		
-		if (ligaDao.getLiga() == null) {
-			System.out.println("Error 500. Fatal Sever Error");
-			esperar(2);
-			return;
-		} else {
-			System.out.println("Liga predefinida cargada con éxito");
-		}
-			
-		System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
-		esperar(2);
-	}
-	
-	
-	
 	private int titulosEquipo() {
 		int titulos = -1;
 		Scanner lectorTitulos;
@@ -286,6 +240,38 @@ public class PanelControl {
 		} while (titulos<0);
 		
 		return titulos;
+	}
+
+
+	/*private void borrarEquipo() {
+		if (ligaXML.getLiga() == null) {
+			System.out.println("Liga inexistente.");
+			esperar(2);
+		} else {
+			sc6 = new Scanner(System.in);
+			System.out.println("Introduzca el nombre del equipo a borrar");
+			String nombre = sc6.nextLine();
+			boolean borrado = ligaXML.getLiga().removeEquipo(nombre);
+			if (borrado==true) {
+				System.out.println("Equipo eliminado correctamente");
+				esperar(2);
+			} else {
+				System.out.println("No existe un equipo con ese nombre en la liga");
+				esperar(2);
+			}
+		}
+	} */
+
+	private void validarLigaConDTD() {
+		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
+		System.out.println("El documento debe de estar en la carpeta ./xml/archivo.xml");
+		System.out.println("Puede escribir si lo desea nuestro archivo por defecto para dtd. Escriba \"ligaDTD.xml\" para validar"
+				+ " nuestra liga por defecto");
+	//	validadorDTD = new CheckDTD();
+		sc5 = new Scanner(System.in);
+		String nombreArchivo = sc5.nextLine();
+	//	validadorDTD.validarLiga(nombreArchivo);
+		esperar(3);
 	}
 
 	public static void esperar(int segundos){
