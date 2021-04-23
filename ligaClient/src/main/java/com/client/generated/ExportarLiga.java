@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="nombreArchivo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -25,8 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "exportarLiga")
+@XmlType(name = "exportarLiga", propOrder = {
+    "nombreArchivo"
+})
 public class ExportarLiga {
 
+    protected String nombreArchivo;
+
+    /**
+     * Obtiene el valor de la propiedad nombreArchivo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    /**
+     * Define el valor de la propiedad nombreArchivo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreArchivo(String value) {
+        this.nombreArchivo = value;
+    }
 
 }

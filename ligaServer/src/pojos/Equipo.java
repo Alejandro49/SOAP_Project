@@ -46,6 +46,11 @@ public class Equipo  implements Serializable{
 	}
 	
 	
+	public Equipo(String nombreEquipo) {
+		super();
+		this.nombre = nombreEquipo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

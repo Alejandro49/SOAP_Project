@@ -16,71 +16,79 @@ import xml.LigaXML;
 public class LigaSOAP {
 	
 	LigaXML ligaXML = new LigaXML();
-	Liga liga;
 	
 	
 	
 	@WebMethod (operationName = "crearLiga")
 	public void crearLiga (@WebParam(name = "ligaNueva") ArrayList<Equipo> ligaNueva) {
-		liga = new Liga();
+		Liga liga = new Liga();
 		liga.setLiga(ligaNueva);
+		ligaXML.setLiga(liga);
 	}
 	
 	@WebMethod (operationName = "obtenerLiga")
 	public Liga obtenerLiga() {
-		return liga;
+		return ligaXML.getLiga();
 	}
 	
+	// devuelve true si se añade el equipo
+	// devuelve false si ya hay un equipo con ese nombre en la liga
 	@WebMethod (operationName = "anadirEquipo")
 	public boolean anadirEquipo (@WebParam(name = "equipoNuevo") Equipo equipoNuevo) {
-		if (liga == null) {
-		 return false;
-		} else {
-			liga.addEquipo(equipoNuevo);
-			return true;
-		}
+		 boolean insercion = ligaXML.getLiga().addEquipo(equipoNuevo);
+		 return insercion;
 	}
 	
+	// devuelve null si no esta el equipo con ese nombre en la liga, o te devuelve el equipo
 	@WebMethod (operationName = "obtenerEquipo")
 	public Equipo obtenerEquipo(@WebParam(name = "nombreEquipo") String nombreEquipo) {
-		Equipo equipoAObtener = new Equipo();
-		equipoAObtener.setNombre(nombreEquipo);
-		return liga.getEquipo(equipoAObtener);
+		return ligaXML.getLiga().getEquipo(nombreEquipo);
 	}
 	
+	// Devuelve 1 si se exporta correctamente a un archivo xml
+	// Devuelve 0 si salta alguna excepción del marshalling a xml
+	// Devuelve -1 si la liga esta vacía y por lo tanto, no tiene sentido exportarla.
 	@WebMethod (operationName = "exportarLiga")
-	public boolean exportarLiga() {
-		if (liga == null) {
-			return false;
+	public int exportarLiga(@WebParam(name = "nombreArchivo") String nombreArchivo) { 
+		if (ligaXML.getLiga().isEmpty()) {
+			return -1;
 		} else {
 			try {
-				ligaXML.exportarLiga(liga);
-				return true;
+				ligaXML.exportarLiga(nombreArchivo);
+				return 1;
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return false;
+				return 0;
 			}
 		}
 	}
-	
+	// devuelve -1 si el equipo no esta en la liga
+	// devuelve 0 si se produce una excepción xml
+	// devuelve 1 si el equipo se ha exportado correctamente
 	@WebMethod (operationName = "exportarEquipo")
-	public boolean exportarEquipo(@WebParam(name = "equipoAExportar") Equipo equipoAExportar) {
-		try {
-			ligaXML.exportarEquipo(equipoAExportar);
-			return true;
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+	public int exportarEquipo(@WebParam(name = "nombreEquipo") String nombreEquipo ) {
+		if (ligaXML.getLiga().contiene(nombreEquipo)) {
+			Equipo equipoAExportar = ligaXML.getLiga().getEquipo(nombreEquipo);
+			try {
+				ligaXML.exportarEquipo(equipoAExportar);
+				return 1;
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return 0;
+			}
+		} else {
+			return -1;
 		}
 	}
 	
+	// devuelve true si la liga se ha importado al servidor con exito
+	// devuelve false si ha saltado alguna excepción xml
 	@WebMethod (operationName = "importarLiga")
 	public boolean importarLiga(@WebParam(name = "nombreFichero") String nombreFichero) {
 		try {
 			ligaXML.importarLiga(nombreFichero);
-			liga = ligaXML.getLiga();
 			return true;
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
@@ -89,35 +97,34 @@ public class LigaSOAP {
 		}
 	}
 	
+	// devuelve -1 si ese equipo ya esta en la liga, y por lo tanto no se puede importar
+	// devuelve 0 si se produce una excepción xml
+	// devuelve 1 si el equipo se ha importado a la liga correctamente
 	@WebMethod (operationName = "importarEquipo")
-	public boolean importarEquipo(@WebParam(name = "nombreFichero") String nombreFichero) {
+	public int importarEquipo(@WebParam(name = "nombreFichero") String nombreFichero) {
 		try {
-			liga.addEquipo(ligaXML.importarEquipo(nombreFichero));
-			return true;
+			 if (ligaXML.importarEquipo(nombreFichero)) {
+				 return 1;
+			 } else {
+				 return -1;
+			 }
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 	}
 	
+	// Devuelve la liga predefinida o null, en caso de que haya habido un error al hacer unmarshall del documento xml de la liga,
 	@WebMethod (operationName = "inicializarLigaPredefinida")
 	public Liga cargarLigaPredefinida() {
 		try {
 			ligaXML.importarLigaPredefinida();
-			liga = ligaXML.getLiga();
-			return this.liga;
+			return ligaXML.getLiga();
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 }

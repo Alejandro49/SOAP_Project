@@ -121,13 +121,13 @@ public class PanelControl {
 			}
 		break;
 		case 7: // Borrar equipo mediante su nombre // sc6
-			borrarEquipo();
+			//borrarEquipo();
 		break;
 		case 8: 
-			unMarhallEquipo();
+			
 		break;
 		case 9:
-			marshallEquipo();
+			
 		break;
 		case 10:
 			validarLigaConDTD();
@@ -143,7 +143,7 @@ public class PanelControl {
 	}
 
 
-	private void borrarEquipo() {
+	/*private void borrarEquipo() {
 		if (ligaXML.getLiga() == null) {
 			System.out.println("Liga inexistente.");
 			esperar(2);
@@ -160,17 +160,17 @@ public class PanelControl {
 				esperar(2);
 			}
 		}
-	}
+	} */
 
 	private void validarLigaConDTD() {
 		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
 		System.out.println("El documento debe de estar en la carpeta ./xml/archivo.xml");
 		System.out.println("Puede escribir si lo desea nuestro archivo por defecto para dtd. Escriba \"ligaDTD.xml\" para validar"
 				+ " nuestra liga por defecto");
-		validadorDTD = new CheckDTD();
+	//	validadorDTD = new CheckDTD();
 		sc5 = new Scanner(System.in);
 		String nombreArchivo = sc5.nextLine();
-		validadorDTD.validarLiga(nombreArchivo);
+	//	validadorDTD.validarLiga(nombreArchivo);
 		esperar(3);
 	}
 
@@ -191,14 +191,14 @@ public class PanelControl {
 			String entrenador =  sc2.nextLine();
 			System.out.println("Introduce nombre del presidente del equipo:");
 			String presidente =  sc2.nextLine();
-			Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
+		//	Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
 			System.out.println("Equipo que acabas de crear:");
-			System.out.println(equipoCreado);
+		//	System.out.println(equipoCreado);
 			esperar(3);
 			System.out.println("Escriba \"ok\" para a�adirlo a la liga");
 			String confirmacion = sc2.nextLine();
 			if (confirmacion.equals("ok")) {
-				liga.addEquipo(equipoCreado);
+		//		liga.addEquipo(equipoCreado);
 				System.out.println("Equipo a�adido a la liga");
 			}
 			System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir a�adiendo equipos ");
@@ -206,66 +206,12 @@ public class PanelControl {
 		} while (respuesta.equals("no") == false);
 		System.out.println("Creacion de la liga completada");
 		esperar(2);
-		ligaXML.setLiga(liga);
+		//ligaXML.setLiga(liga);
 	}
 	
-	private void marshallEquipo() { //sc4
-		sc4 = new Scanner(System.in);
-		System.out.println("Introduzca el nombre exacto del equipo que quieres exportar");
-		String nombre = sc4.nextLine();
-		Equipo eq = new Equipo();
-		eq.setNombre(nombre);
-		try {
-			eq = ligaXML.getLiga().getEquipo(eq);
-		} catch (NullPointerException ex) {
-			System.out.println("Error, liga inexistente, importala o creala primero");
-			esperar(2);
-			return;
-		}
-		if (eq == null) {
-			System.out.println("Ese equipo no est� en la liga");
-			esperar(2);
-		} else {
-			try {
-				ligaXML.exportarEquipo(eq);
-				String mensaje = "Equipo exportado a ./xml/" + eq.getNombre() + ".xml";
-				System.out.println(mensaje);
-				esperar(2);
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return;
-	}
+	
 
-	private boolean unMarhallEquipo() {
-		Equipo equipo = new Equipo();
-		sc3 = new Scanner(System.in);
-		System.out.println("Introduzca el nombre del fichero a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml");
-		String nombreFichero = sc3.nextLine();
-		try {
-			equipo = ligaXML.importarEquipo(nombreFichero);
-		} catch (JAXBException e) {
-			e.printStackTrace();
-			System.out.println("Se ha producido un error inesperado");
-			return false;
-		} catch (IllegalArgumentException ex) {
-			System.out.println("No se ha encontrado el archivo");
-			esperar(2);
-			return false;
-		}
-		if (ligaXML.getLiga() == null) {
-			Liga liga2 = new Liga();
-			liga2.addEquipo(equipo);
-			ligaXML.setLiga(liga2);
-		} else { 
-			ligaXML.getLiga().addEquipo(equipo);
-		}
-		System.out.println("Se ha importado el equipo correctamente, seleccione la opcion mostrar para verlo");
-		esperar(2);
-		return true;
-	}
+	
 
 	private void exportarLiga() {
 		System.out.println("Exportando liga como archivo: \"ligaExportada.xml\" ");
@@ -292,7 +238,7 @@ public class PanelControl {
 		
 		if (ligaSOAP.importarLiga(nombreFichero)) {
 			Liga ligaImportada = ligaSOAP.obtenerLiga();
-			liga = ligaImportada;
+			//liga = ligaImportada;
 			System.out.println("Liga importada correctamente");
 			System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
 			esperar(2);

@@ -13,8 +13,7 @@ import pojos.Liga;
 
 public class LigaXML {
 	
-	private Liga liga;
-	private Equipo equipo;
+	private Liga liga = new Liga();
 	
 	public void importarLigaPredefinida() throws JAXBException {
 		//unMarshalling()
@@ -29,7 +28,8 @@ public class LigaXML {
 		// Escribiendo por pantalla el objeto
 	}
 	
-	public void exportarLiga(Liga liga) throws JAXBException {
+	public void exportarLiga(String nombreArchivo) throws JAXBException {
+		String ruta = "./xml/" + nombreArchivo + ".xml";
 		//Marshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
@@ -40,7 +40,7 @@ public class LigaXML {
 		jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
         jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Escribiendo en un fichero
-		File XMLfile = new File("./xml/ligaExportada.xml");
+		File XMLfile = new File(ruta);
 		jaxbM.marshal(liga, XMLfile);
 
 	}
@@ -53,13 +53,14 @@ public class LigaXML {
 		liga = (Liga) jaxbU.unmarshal(XMLfile);
 	}
 	
-	public Equipo importarEquipo(String nombreFichero) throws JAXBException {
+	public boolean importarEquipo(String nombreFichero) throws JAXBException {
 		String ruta = "./xml/" + nombreFichero;
 		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
 		File XMLfile = new File(ruta);
 		Equipo equipo = (Equipo) jaxbU.unmarshal(XMLfile);
-		return equipo;
+		
+		return liga.addEquipo(equipo);
 	}
 	
 	public  void exportarEquipo(Equipo eq) throws JAXBException {

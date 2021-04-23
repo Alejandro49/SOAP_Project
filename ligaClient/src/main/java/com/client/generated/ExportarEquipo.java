@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="equipoAExportar" type="{http://liga.sw.com/}equipo" minOccurs="0"/&gt;
+ *         &lt;element name="nombreEquipo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,34 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "exportarEquipo", propOrder = {
-    "equipoAExportar"
+    "nombreEquipo"
 })
 public class ExportarEquipo {
 
-    protected Equipo equipoAExportar;
+    protected String nombreEquipo;
 
     /**
-     * Obtiene el valor de la propiedad equipoAExportar.
+     * Obtiene el valor de la propiedad nombreEquipo.
      * 
      * @return
      *     possible object is
-     *     {@link Equipo }
+     *     {@link String }
      *     
      */
-    public Equipo getEquipoAExportar() {
-        return equipoAExportar;
+    public String getNombreEquipo() {
+        return nombreEquipo;
     }
 
     /**
-     * Define el valor de la propiedad equipoAExportar.
+     * Define el valor de la propiedad nombreEquipo.
      * 
      * @param value
      *     allowed object is
-     *     {@link Equipo }
+     *     {@link String }
      *     
      */
-    public void setEquipoAExportar(Equipo value) {
-        this.equipoAExportar = value;
+    public void setNombreEquipo(String value) {
+        this.nombreEquipo = value;
     }
 
 }

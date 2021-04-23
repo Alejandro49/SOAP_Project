@@ -17,94 +17,49 @@ public class Liga implements Serializable{
 	private static final long serialVersionUID = -47891006084131330L;
 	
 	@XmlElement(name = "Equipo")
-	private ArrayList<Equipo> liga;
+	private ArrayList<Equipo> liga = new ArrayList<>();
 	
 	public Liga() {
 		super();
-		liga = new ArrayList<>();
 	}
 	
-	
-	public void addEquipo(Equipo e) {
-		if(!liga.contains(e))
-			liga.add(e);
+	// devuelve false si ya hay un equipo con ese nombre en la liga, y por lo tanto no se puede importar
+	// deuvelve true si se añade con exito el equipo a la liga
+	public boolean addEquipo(Equipo eq) {
+		if(liga.contains(eq)) {
+			return false;
+		} else {
+			liga.add(eq);
+			return true;
+		}
 	}
 	
-	public void removeEquipo(Equipo e) {
-		liga.remove(e);
-	}
-	public boolean removeEquipo(String nombre) {
-		Equipo equipo = new Equipo();
-		equipo.setNombre(nombre);
+	//devuelve true si el equipo estaba en la liga y se ha borrado. Devuelve false si el equipo no estaba en la liga y por lo tanto, la lista no ha cambiado.
+	public boolean removeEquipo(String nombreEquipo) {  //
+		Equipo equipo = new Equipo(nombreEquipo);
 		return liga.remove(equipo);
 	}
 	
-	public void mostrarLiga() {
-		if (liga == null || liga.isEmpty()) {
-			System.out.println("Liga vacía, debes importarla o crearla primero");
-			esperar(2);
-		}
-		for (Equipo equipo: liga) {
-			esperar(1);
-			System.out.println(equipo);
-		}
-	}
 	
-	public void leerEquipoDeTeclado() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduzca los datos del nuevo equipo:");
-		System.out.println("Introduce nombre del equipo:");
-		String nombre =  sc.nextLine();
-		System.out.println("Introduce nombre del pais:");
-		String pais =  sc.nextLine();
-		int titulos = leerTitulosDeTeclado();
-		System.out.println("Introduce nombre del entrenador del equipo:");
-		String entrenador =  sc.nextLine();
-		System.out.println("Introduce nombre del presidente del equipo:");
-		String presidente =  sc.nextLine();
-		Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
-		System.out.println("Equipo que acabas de crear:");
-		System.out.println(equipoCreado);
-		esperar(3);
-		System.out.println("Escriba \"ok\" para añadirlo a la liga");
-		String confirmacion = sc.nextLine();
-		if (confirmacion.equals("ok")) {
-			this.liga.add(equipoCreado);
-			System.out.println("Equipo añadido a la liga");
-			esperar(2);
-		} else {
-			System.out.println("No se ha añadido a la liga");
-			esperar(2);
-		}
-	}
-	
-	private int leerTitulosDeTeclado() {
-		
-		int titulos = -1;
-		Scanner lectorTitulos;
-		do {
-			try {
-				lectorTitulos = new Scanner(System.in);
-				System.out.println("Introduce el nº de títulos del equipo: ");
-				titulos = lectorTitulos.nextInt();
-			} catch (InputMismatchException ime){
-				System.out.println("Debes introducir un numero entero, no veas lo que cuesta gestionar excepciones...");
-				esperar(2);
-			}
-			
-		} while (titulos<0);
-		
-		return titulos;
-	}
-
-
-	public Equipo getEquipo(Equipo eq) {
-		int index = liga.indexOf(eq);
+	// devuelve null si no esta el equipo con ese nombre en la liga o te devuelve
+	public Equipo getEquipo(String nombreEquipo) {
+		Equipo equipo = new Equipo(nombreEquipo);
+		int index = liga.indexOf(equipo);
 		if (index == -1) {
 			return null;
 		} else {
 			return liga.get(index);
 		}
+	}
+	
+	// devuelve true si la liga contiene un equipo con ese nombre
+	public boolean contiene(String nombreEquipo) {
+		Equipo eq = new Equipo(nombreEquipo);
+		return liga.contains(eq);
+	}
+	
+	public boolean isEmpty() {
+		return liga.isEmpty();
 	}
 	
 	public ArrayList<Equipo> getLiga() {
@@ -115,13 +70,7 @@ public class Liga implements Serializable{
 		this.liga = liga;
 	}
 	
-	public static void esperar(int segundos){
-        try {
-            Thread.sleep(segundos * 1000);
-         } catch (Exception e) {
-            System.out.println(e);
-         }
-    }
+	
 
 
 	
