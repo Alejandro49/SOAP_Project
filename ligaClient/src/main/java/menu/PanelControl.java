@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
 import com.client.generated.Liga;
 import com.client.generated.LigaSOAP;
 import com.client.generated.LigaSOAP_Service;
-import com.ligaClient.VistaLiga;
+import com.ligaClient.LigaCliente;
 import com.sun.tools.javac.Main;
 
 public class PanelControl {
@@ -94,13 +94,13 @@ public class PanelControl {
 				esperar(2);
 			} else {
 				System.out.println("Mostrando los equipos de la liga:");
-				VistaLiga vistaLiga = new VistaLiga(liga);
+				LigaCliente vistaLiga = new LigaCliente(liga);
 				vistaLiga.mostrarLiga();
 			}
 			
 		break;
 		case 6: // Añadir equipo manualmente
-			if (ligaXML.getLiga() == null) {
+			if (liga == null) {
 				System.out.println("Liga inexistente, debes crearla o importarla primero para poder a�adir equipos");
 				esperar(2);
 			} else {
