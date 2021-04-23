@@ -14,8 +14,10 @@ import org.xml.sax.SAXException;
 import com.client.generated.Liga;
 import com.client.generated.LigaSOAP;
 import com.client.generated.LigaSOAP_Service;
-import com.ligaClient.LigaCliente;
 import com.sun.tools.javac.Main;
+
+import modelo.EquipoDao;
+import modelo.LigaDao;
 
 public class PanelControl {
 	
@@ -23,8 +25,8 @@ public class PanelControl {
 	
 	LigaSOAP ligaSOAP;
 	
-	Liga liga;
-	
+	LigaDao ligaDao = new LigaDao();
+	EquipoDao equipoDao = new EquipoDao();
 	
 	Scanner sc1;
 	Scanner sc2;
@@ -89,22 +91,33 @@ public class PanelControl {
 		break;
 		case 5: // Mostrar equipos
 			
-			if (liga == null || liga.getEquipo().isEmpty()) {
+			if (ligaDao.getLiga().getEquipo() == null || ligaDao.getLiga().getEquipo().isEmpty()) {
 				System.out.println("Liga vacía, debes importarla o crearla primero");
 				esperar(2);
 			} else {
 				System.out.println("Mostrando los equipos de la liga:");
-				LigaCliente vistaLiga = new LigaCliente(liga);
-				vistaLiga.mostrarLiga();
+				ligaDao.mostrarLiga();
 			}
 			
 		break;
 		case 6: // Añadir equipo manualmente
-			if (liga == null) {
-				System.out.println("Liga inexistente, debes crearla o importarla primero para poder a�adir equipos");
+			if (ligaDao.getLiga().getEquipo() == null) {
+				System.out.println("Liga inexistente, debes crearla o importarla primero para poder añadir equipos");
 				esperar(2);
 			} else {
-				ligaXML.getLiga().leerEquipoDeTeclado();
+				Scanner sc = new Scanner(System.in);
+				equipoDao.leerEquipoDeTeclado();
+				System.out.println("Escriba \"ok\" para añadirlo a la liga");
+				String confirmacion = sc.nextLine();
+				if (confirmacion.equals("ok")) {
+					ligaDao.addEquipo(equipoDao.getEquipo());
+					System.out.println("Equipo añadido a la liga");
+					esperar(2);
+				} else {
+					System.out.println("No se ha añadido a la liga");
+					esperar(2);
+				}
+				
 			}
 		break;
 		case 7: // Borrar equipo mediante su nombre // sc6
@@ -295,9 +308,9 @@ public class PanelControl {
 	private void cargarLigaPredefinida() {
 		
 		System.out.println("Inicializado ligaPredefinida.xml");
-		liga = ligaSOAP.inicializarLigaPredefinida();
+		ligaDao.setLiga(ligaSOAP.inicializarLigaPredefinida()); 
 		
-		if (liga == null) {
+		if (ligaDao.getLiga() == null) {
 			System.out.println("Error 500. Fatal Sever Error");
 			esperar(2);
 			return;

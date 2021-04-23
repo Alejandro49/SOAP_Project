@@ -1,25 +1,38 @@
-package com.ligaClient;
+package modelo;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.client.generated.Equipo;
-import com.client.generated.Liga;
 
-public class LigaCliente {
+public class EquipoDao {
 	
-	private Liga liga;
+	private Equipo equipo;
 	
-	public LigaCliente (Liga liga) {
-		this.liga = liga;
+	public EquipoDao (Equipo eq) {
+		this.equipo = eq;
 	}
 	
-	public void mostrarLiga() {
-		for (Equipo equipo: liga.getEquipo()) {
-			EquipoCliente vistaEq = new EquipoCliente(equipo);
-			System.out.println(vistaEq);
-			esperar(2);
-		}
+	
+	public EquipoDao(String nombre, String pais, int titulos, String entrenador, String presidente) {
+		Equipo eq = new Equipo();
+		equipo.setNombre(nombre);
+		equipo.setPais(pais);
+		equipo.setTitulos(titulos);
+		equipo.setEntrenador(entrenador);
+		equipo.setPresidente(presidente);
+		this.equipo = eq;
+	}
+	
+	public EquipoDao() {
+		// Constructor vacío
+	}
+
+
+	@Override
+	public String toString() {
+		return "Equipo [Nombre=" + equipo.getNombre() + ", Pais=" + equipo.getPais() + ", Titulos=" + equipo.getTitulos() + ", Entrenador="
+				+ equipo.getEntrenador() + ", Presidente=" + equipo.getPresidente() + "]";
 	}
 	
 	public void leerEquipoDeTeclado() {
@@ -34,20 +47,10 @@ public class LigaCliente {
 		String entrenador =  sc.nextLine();
 		System.out.println("Introduce nombre del presidente del equipo:");
 		String presidente =  sc.nextLine();
-		EquipoCliente equipoCreado = new EquipoCliente(nombre,pais,titulos,entrenador,presidente);
+		EquipoDao equipoCreado = new EquipoDao(nombre,pais,titulos,entrenador,presidente);
 		System.out.println("Equipo que acabas de crear:");
 		System.out.println(equipoCreado);
 		esperar(3);
-		System.out.println("Escriba \"ok\" para añadirlo a la liga");
-		String confirmacion = sc.nextLine();
-		if (confirmacion.equals("ok")) {
-			this.liga.getEquipo().add(equipoCreado.getEquipo());
-			System.out.println("Equipo añadido a la liga");
-			esperar(2);
-		} else {
-			System.out.println("No se ha añadido a la liga");
-			esperar(2);
-		}
 	}
 	
 	private int leerTitulosDeTeclado() {
@@ -70,15 +73,6 @@ public class LigaCliente {
 	}
 
 
-	public Equipo getEquipo(Equipo eq) {
-		int index = liga.indexOf(eq);
-		if (index == -1) {
-			return null;
-		} else {
-			return liga.get(index);
-		}
-	}
-	
 	public static void esperar(int segundos){
         try {
             Thread.sleep(segundos * 1000);
@@ -86,5 +80,17 @@ public class LigaCliente {
             System.out.println(e);
          }
     }   
+
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+	
+	
 
 }
