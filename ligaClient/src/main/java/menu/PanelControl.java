@@ -116,8 +116,8 @@ public class PanelControl {
 		case 7: // Borrar equipo mediante su nombre // sc6
 			sc6 = new Scanner(System.in);
 			System.out.println("Introduzca el nombre del equipo a borrar");
-			String nombre = sc6.nextLine();
-			boolean borrado = false;
+			String nombreEquipo = sc6.nextLine();
+			boolean borrado = ligaSOAP.borrarEquipo(nombreEquipo);
 			if (borrado==true) {
 				System.out.println("Equipo eliminado correctamente");
 				esperar(2);
