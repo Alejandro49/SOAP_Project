@@ -28,6 +28,8 @@ public class ObjectFactory {
     private final static QName _Liga_QNAME = new QName("http://liga.sw.com/", "Liga");
     private final static QName _AnadirEquipo_QNAME = new QName("http://liga.sw.com/", "anadirEquipo");
     private final static QName _AnadirEquipoResponse_QNAME = new QName("http://liga.sw.com/", "anadirEquipoResponse");
+    private final static QName _BorrarEquipo_QNAME = new QName("http://liga.sw.com/", "borrarEquipo");
+    private final static QName _BorrarEquipoResponse_QNAME = new QName("http://liga.sw.com/", "borrarEquipoResponse");
     private final static QName _CrearLiga_QNAME = new QName("http://liga.sw.com/", "crearLiga");
     private final static QName _CrearLigaResponse_QNAME = new QName("http://liga.sw.com/", "crearLigaResponse");
     private final static QName _ExportarEquipo_QNAME = new QName("http://liga.sw.com/", "exportarEquipo");
@@ -44,6 +46,8 @@ public class ObjectFactory {
     private final static QName _ObtenerEquipoResponse_QNAME = new QName("http://liga.sw.com/", "obtenerEquipoResponse");
     private final static QName _ObtenerLiga_QNAME = new QName("http://liga.sw.com/", "obtenerLiga");
     private final static QName _ObtenerLigaResponse_QNAME = new QName("http://liga.sw.com/", "obtenerLigaResponse");
+    private final static QName _ValidarLiga_QNAME = new QName("http://liga.sw.com/", "validarLiga");
+    private final static QName _ValidarLigaResponse_QNAME = new QName("http://liga.sw.com/", "validarLigaResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.client.generated
@@ -82,6 +86,22 @@ public class ObjectFactory {
      */
     public AnadirEquipoResponse createAnadirEquipoResponse() {
         return new AnadirEquipoResponse();
+    }
+
+    /**
+     * Create an instance of {@link BorrarEquipo }
+     * 
+     */
+    public BorrarEquipo createBorrarEquipo() {
+        return new BorrarEquipo();
+    }
+
+    /**
+     * Create an instance of {@link BorrarEquipoResponse }
+     * 
+     */
+    public BorrarEquipoResponse createBorrarEquipoResponse() {
+        return new BorrarEquipoResponse();
     }
 
     /**
@@ -213,6 +233,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ValidarLiga }
+     * 
+     */
+    public ValidarLiga createValidarLiga() {
+        return new ValidarLiga();
+    }
+
+    /**
+     * Create an instance of {@link ValidarLigaResponse }
+     * 
+     */
+    public ValidarLigaResponse createValidarLigaResponse() {
+        return new ValidarLigaResponse();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Equipo }{@code >}
      * 
      * @param value
@@ -262,6 +298,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://liga.sw.com/", name = "anadirEquipoResponse")
     public JAXBElement<AnadirEquipoResponse> createAnadirEquipoResponse(AnadirEquipoResponse value) {
         return new JAXBElement<AnadirEquipoResponse>(_AnadirEquipoResponse_QNAME, AnadirEquipoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BorrarEquipo }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BorrarEquipo }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "borrarEquipo")
+    public JAXBElement<BorrarEquipo> createBorrarEquipo(BorrarEquipo value) {
+        return new JAXBElement<BorrarEquipo>(_BorrarEquipo_QNAME, BorrarEquipo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BorrarEquipoResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link BorrarEquipoResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "borrarEquipoResponse")
+    public JAXBElement<BorrarEquipoResponse> createBorrarEquipoResponse(BorrarEquipoResponse value) {
+        return new JAXBElement<BorrarEquipoResponse>(_BorrarEquipoResponse_QNAME, BorrarEquipoResponse.class, null, value);
     }
 
     /**
@@ -470,6 +532,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://liga.sw.com/", name = "obtenerLigaResponse")
     public JAXBElement<ObtenerLigaResponse> createObtenerLigaResponse(ObtenerLigaResponse value) {
         return new JAXBElement<ObtenerLigaResponse>(_ObtenerLigaResponse_QNAME, ObtenerLigaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarLiga }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ValidarLiga }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "validarLiga")
+    public JAXBElement<ValidarLiga> createValidarLiga(ValidarLiga value) {
+        return new JAXBElement<ValidarLiga>(_ValidarLiga_QNAME, ValidarLiga.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarLigaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ValidarLigaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "validarLigaResponse")
+    public JAXBElement<ValidarLigaResponse> createValidarLigaResponse(ValidarLigaResponse value) {
+        return new JAXBElement<ValidarLigaResponse>(_ValidarLigaResponse_QNAME, ValidarLigaResponse.class, null, value);
     }
 
 }

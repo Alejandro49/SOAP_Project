@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 
 import pojos.Equipo;
 import pojos.Liga;
+import xml.CheckDTD;
 import xml.LigaXML;
 
 @WebService (serviceName = "ligaSOAP")
@@ -37,6 +38,16 @@ public class LigaSOAP {
 	public boolean anadirEquipo (@WebParam(name = "equipoNuevo") Equipo equipoNuevo) {
 		 boolean insercion = ligaXML.getLiga().addEquipo(equipoNuevo);
 		 return insercion;
+	}
+	
+	//devuelve true si el equipo estaba en la liga y se ha borrado. Devuelve false si el equipo no estaba en la liga y por lo tanto, la lista no ha cambiado.
+	@WebMethod (operationName = "borrarEquipo")
+	public boolean borrarEquipo(@WebParam(name = "nombreEquipo") String nombreEquipo) {
+		if (ligaXML.getLiga().removeEquipo(nombreEquipo)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	// devuelve null si no esta el equipo con ese nombre en la liga, o te devuelve el equipo
@@ -127,4 +138,12 @@ public class LigaSOAP {
 			return null;
 		}
 	}
+	
+	@WebMethod (operationName = "validarLiga")
+	public String validarLigaConDTD(@WebParam(name = "nombreFichero") String nombreFichero) {
+		CheckDTD checker = new CheckDTD();
+		return checker.validarLiga(nombreFichero);
+	}
+	
+	
 }

@@ -14,11 +14,12 @@ import org.xml.sax.SAXException;
 
 public class CheckDTD {
 	
-	public void validarLiga(String nombreArchivo) {
+	public String validarLiga(String nombreArchivo) {
 		
 		String ruta = "./xml/" + nombreArchivo;
 		
 		File xmlFile = new File(ruta);
+		String mensaje = "";
 		
 		try {
 			DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
@@ -28,22 +29,22 @@ public class CheckDTD {
 			builder.setErrorHandler(customErrorHandler);
 			Document doc = builder.parse(xmlFile);
 			if (customErrorHandler.isValid()) {
-				System.out.println(xmlFile + " was valid!");
+				mensaje = xmlFile + " was valid!";
 			} else {
-				System.out.println(xmlFile + " was not valid!");
+				mensaje = xmlFile + " was not valid!";
 			}
 		} catch (ParserConfigurationException ex) {
-			System.out.println(xmlFile + " error while parsing!");
+			mensaje = xmlFile + " error while parsing!";
 			Logger.getLogger(CheckDTD.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (SAXException ex) {
-			System.out.println(xmlFile + " was not well-formed!");
+			mensaje = xmlFile + " was not well-formed!";
 			Logger.getLogger(CheckDTD.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
-			System.out.println(xmlFile + " was not accesible!");
+			mensaje = xmlFile + " was not accesible!";
 			Logger.getLogger(CheckDTD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
-		
+		return mensaje;
 	}
 		
 		

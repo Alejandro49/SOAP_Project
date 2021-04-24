@@ -8,7 +8,7 @@ import com.client.generated.Liga;
 
 public class LigaDao {
 	
-	private Liga liga;
+	private Liga liga = new Liga();
 	
 	public LigaDao (Liga liga) {
 		this.liga = liga;
@@ -19,10 +19,15 @@ public class LigaDao {
 	}
 
 	public void mostrarLiga() {
-		for (Equipo equipo: liga.getEquipo()) {
-			EquipoDao equipoDao = new EquipoDao(equipo);
-			System.out.println(equipoDao);
+		if (liga.getEquipo().isEmpty()) {
+			System.out.println("Liga vacía, añade equipos primero, importarla o creala primero");
 			esperar(2);
+		} else {
+			for (Equipo equipo: liga.getEquipo()) {
+				EquipoDao equipoDao = new EquipoDao(equipo);
+				System.out.println(equipoDao);
+				esperar(1);
+				}
 		}
 	}
 	
@@ -32,10 +37,16 @@ public class LigaDao {
 		return liga.getEquipo().remove(equipo);
 	}
 
-	public void addEquipo(Equipo e) {
-		if(!liga.getEquipo().contains(e))
-			liga.getEquipo().add(e);
-	}
+		// devuelve false si ya hay un equipo con ese nombre en la liga, y por lo tanto no se puede importar
+		// deuvelve true si se añade con exito el equipo a la liga
+		public boolean addEquipo(Equipo equipoAInsertar) {
+			for (Equipo equipo : liga.getEquipo()) {
+				if (equipo.getNombre().equals(equipoAInsertar.getNombre())) {
+					return false;
+				}
+			}
+			 return liga.getEquipo().add(equipoAInsertar);
+		}
 	
 	public Equipo getEquipo(Equipo eq) {
 		int index = liga.getEquipo().indexOf(eq);

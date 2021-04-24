@@ -7,7 +7,7 @@ import com.client.generated.Equipo;
 
 public class EquipoDao {
 	
-	private Equipo equipo;
+	private Equipo equipo = new Equipo();
 	
 	public EquipoDao (Equipo eq) {
 		this.equipo = eq;
@@ -35,7 +35,7 @@ public class EquipoDao {
 				+ equipo.getEntrenador() + ", Presidente=" + equipo.getPresidente() + "]";
 	}
 	
-	public void leerEquipoDeTeclado() {
+	public EquipoDao leerEquipoDeTeclado() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduzca los datos del nuevo equipo:");
 		System.out.println("Introduce nombre del equipo:");
@@ -51,6 +51,7 @@ public class EquipoDao {
 		System.out.println("Equipo que acabas de crear:");
 		System.out.println(equipoCreado);
 		esperar(3);
+		return equipoCreado;
 	}
 	
 	private int leerTitulosDeTeclado() {

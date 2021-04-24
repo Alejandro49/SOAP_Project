@@ -11,6 +11,7 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
+import com.client.generated.Equipo;
 import com.client.generated.Liga;
 import com.client.generated.LigaSOAP;
 import com.client.generated.LigaSOAP_Service;
@@ -90,38 +91,40 @@ public class PanelControl {
 			crearLiga();
 		break;
 		case 5: // Mostrar equipos
-			
-			if (ligaDao.getLiga().getEquipo() == null || ligaDao.getLiga().getEquipo().isEmpty()) {
-				System.out.println("Liga vacía, debes importarla o crearla primero");
-				esperar(2);
-			} else {
-				System.out.println("Mostrando los equipos de la liga:");
-				ligaDao.mostrarLiga();
-			}
-			
+			ligaDao.setLiga(ligaSOAP.obtenerLiga());
+			ligaDao.mostrarLiga();
 		break;
 		case 6: // Añadir equipo manualmente
-			if (ligaDao.getLiga().getEquipo() == null) {
-				System.out.println("Liga inexistente, debes crearla o importarla primero para poder añadir equipos");
-				esperar(2);
-			} else {
+				EquipoDao equipoAInsertar = equipoDao.leerEquipoDeTeclado();
 				Scanner sc = new Scanner(System.in);
-				equipoDao.leerEquipoDeTeclado();
 				System.out.println("Escriba \"ok\" para añadirlo a la liga");
 				String confirmacion = sc.nextLine();
 				if (confirmacion.equals("ok")) {
-					ligaDao.addEquipo(equipoDao.getEquipo());
-					System.out.println("Equipo añadido a la liga");
-					esperar(2);
+					if (ligaSOAP.anadirEquipo(equipoAInsertar.getEquipo())) {
+						System.out.println("Equipo añadido a la liga");
+						esperar(2);
+					} else {
+						System.out.println("Ya existe un equipo con ese nombre en la liga.");
+						esperar(2);
+					}
 				} else {
 					System.out.println("No se ha añadido a la liga");
 					esperar(2);
 				}
 				
-			}
 		break;
 		case 7: // Borrar equipo mediante su nombre // sc6
-			//borrarEquipo();
+			sc6 = new Scanner(System.in);
+			System.out.println("Introduzca el nombre del equipo a borrar");
+			String nombre = sc6.nextLine();
+			boolean borrado = false;
+			if (borrado==true) {
+				System.out.println("Equipo eliminado correctamente");
+				esperar(2);
+			} else {
+				System.out.println("No existe un equipo con ese nombre en la liga");
+				esperar(2);
+			}
 		break;
 		case 8: 
 			
@@ -189,8 +192,8 @@ public class PanelControl {
 		}
 	}
 	
-	private void crearLiga() {  // voy por aquí
-		Liga liga = new Liga(); 
+	private void crearLiga() {  
+		LigaDao ligaDao = new LigaDao(); 
 		System.out.println("Inserte los equipos de forma manual");
 		esperar(2);
 		String respuesta = "";
@@ -206,22 +209,28 @@ public class PanelControl {
 			String entrenador =  sc2.nextLine();
 			System.out.println("Introduce nombre del presidente del equipo:");
 			String presidente =  sc2.nextLine();
-		//	Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
+			EquipoDao equipoCreado = new EquipoDao(nombre,pais,titulos,entrenador,presidente);
 			System.out.println("Equipo que acabas de crear:");
-		//	System.out.println(equipoCreado);
+			System.out.println(equipoCreado);
 			esperar(3);
 			System.out.println("Escriba \"ok\" para a�adirlo a la liga");
 			String confirmacion = sc2.nextLine();
 			if (confirmacion.equals("ok")) {
-		//		liga.addEquipo(equipoCreado);
-				System.out.println("Equipo a�adido a la liga");
+				boolean insercion = ligaDao.addEquipo(equipoCreado.getEquipo());
+				if (insercion == true) {
+					System.out.println("Equipo añadido a la liga");
+				} else {
+					System.out.println("Error, ya hay un equipo con ese nombre en la liga");
+				}
+				
 			}
 			System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir a�adiendo equipos ");
 			respuesta = sc2.nextLine();
 		} while (respuesta.equals("no") == false);
+		
+		ligaSOAP.crearLiga(ligaDao.getLiga().getEquipo());
 		System.out.println("Creacion de la liga completada");
 		esperar(2);
-		//ligaXML.setLiga(liga);
 	}
 	
 	private int titulosEquipo() {
@@ -241,26 +250,6 @@ public class PanelControl {
 		
 		return titulos;
 	}
-
-
-	/*private void borrarEquipo() {
-		if (ligaXML.getLiga() == null) {
-			System.out.println("Liga inexistente.");
-			esperar(2);
-		} else {
-			sc6 = new Scanner(System.in);
-			System.out.println("Introduzca el nombre del equipo a borrar");
-			String nombre = sc6.nextLine();
-			boolean borrado = ligaXML.getLiga().removeEquipo(nombre);
-			if (borrado==true) {
-				System.out.println("Equipo eliminado correctamente");
-				esperar(2);
-			} else {
-				System.out.println("No existe un equipo con ese nombre en la liga");
-				esperar(2);
-			}
-		}
-	} */
 
 	private void validarLigaConDTD() {
 		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
