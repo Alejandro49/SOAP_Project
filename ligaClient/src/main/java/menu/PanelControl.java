@@ -289,13 +289,11 @@ public class PanelControl {
 
 	private void validarLigaConDTD() {
 		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
-		System.out.println("El documento debe de estar en la carpeta ./xml/archivo.xml");
 		System.out.println("Puede escribir si lo desea nuestro archivo por defecto para dtd. Escriba \"ligaDTD.xml\" para validar"
-				+ " nuestra liga por defecto");
-	//	validadorDTD = new CheckDTD();
+				+ " nuestra liga por defecto: ");
 		sc5 = new Scanner(System.in);
 		String nombreArchivo = sc5.nextLine();
-	//	validadorDTD.validarLiga(nombreArchivo);
+		System.out.println(ligaSOAP.validarLiga(nombreArchivo));
 		esperar(3);
 	}
 
