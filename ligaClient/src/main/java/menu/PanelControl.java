@@ -130,7 +130,7 @@ public class PanelControl {
 			importarEquipo();
 		break;
 		case 9:
-			
+			exportarEquipo();
 		break;
 		case 10:
 			validarLigaConDTD();
@@ -143,23 +143,6 @@ public class PanelControl {
 		}
 		
 		cargarPanel();
-	}
-
-	private void importarEquipo() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduzca el nombre del fichero que contiene el equipo a importar (archivo.xml)");
-		String nombreFichero = sc.nextLine();
-		int resultado = ligaSOAP.importarEquipo(nombreFichero);
-		if (resultado == -1) {
-			System.out.println("Ese equipo ya esta en la liga, y por lo tanto, NO se puede importar");
-			esperar(2);
-		} else if (resultado == 0) {
-			System.out.println("Archivo no encontrado, o xml mal formado");
-			esperar(2);
-		} else {
-			System.out.println("Equipo importado a la liga con éxito");
-			esperar(2);
-		}
 	}
 	
 	private void cargarLigaPredefinida() {
@@ -266,6 +249,42 @@ public class PanelControl {
 		} while (titulos<0);
 		
 		return titulos;
+	}
+	
+	private void importarEquipo() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero que contiene el equipo a importar (archivo.xml)");
+		String nombreFichero = sc.nextLine();
+		int resultado = ligaSOAP.importarEquipo(nombreFichero);
+		if (resultado == -1) {
+			System.out.println("Ese equipo ya esta en la liga, y por lo tanto, NO se puede importar");
+			esperar(2);
+		} else if (resultado == 0) {
+			System.out.println("Archivo no encontrado, o xml mal formado");
+			esperar(2);
+		} else {
+			System.out.println("Equipo importado a la liga con éxito");
+			esperar(2);
+		}
+	}
+	
+	private void exportarEquipo() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del equipo que quiere exportar a un archivo xml");
+		String nombreEquipo = sc.nextLine();
+		int resultado = ligaSOAP.exportarEquipo(nombreEquipo);
+		if (resultado == -1) {
+			System.out.println("Error, ese equipo no esta presente en la Liga");
+			esperar(2);
+		} else if (resultado == 0) {
+			System.out.println("Error del servidor (500). No se ha completado la exportación del equipo");
+			esperar(2);
+		} else {
+			String mensaje = "Equipo exportado correctamente en archivo: \"" + nombreEquipo + ".xml\"";
+			System.out.println(mensaje);
+			esperar(3);
+		}
+		
 	}
 
 	private void validarLigaConDTD() {
