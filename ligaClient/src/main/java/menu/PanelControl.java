@@ -126,8 +126,8 @@ public class PanelControl {
 				esperar(2);
 			}
 		break;
-		case 8: 
-			
+		case 8:
+			importarEquipo();
 		break;
 		case 9:
 			
@@ -143,6 +143,23 @@ public class PanelControl {
 		}
 		
 		cargarPanel();
+	}
+
+	private void importarEquipo() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero que contiene el equipo a importar (archivo.xml)");
+		String nombreFichero = sc.nextLine();
+		int resultado = ligaSOAP.importarEquipo(nombreFichero);
+		if (resultado == -1) {
+			System.out.println("Ese equipo ya esta en la liga, y por lo tanto, NO se puede importar");
+			esperar(2);
+		} else if (resultado == 0) {
+			System.out.println("Archivo no encontrado, o xml mal formado");
+			esperar(2);
+		} else {
+			System.out.println("Equipo importado a la liga con éxito");
+			esperar(2);
+		}
 	}
 	
 	private void cargarLigaPredefinida() {
