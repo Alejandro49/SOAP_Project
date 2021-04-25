@@ -177,7 +177,7 @@ public class PanelControl {
 	
 	private void exportarLiga() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduzca el nombre del fichero en el que se exportará la liga");
+		System.out.println("Introduzca un nombre para la liga: ");
 		String nombreFichero = sc.nextLine();
 		int response = ligaSOAP.exportarLiga(nombreFichero);
 		if (response == -1) {
@@ -260,7 +260,10 @@ public class PanelControl {
 			System.out.println("Ese equipo ya esta en la liga, y por lo tanto, NO se puede importar");
 			esperar(2);
 		} else if (resultado == 0) {
-			System.out.println("Archivo no encontrado, o xml mal formado");
+			System.out.println("xml mal formado");
+			esperar(2);
+		} else if (resultado == 2) {
+			System.out.println("Arhivo no encontrado");
 			esperar(2);
 		} else {
 			System.out.println("Equipo importado a la liga con éxito");

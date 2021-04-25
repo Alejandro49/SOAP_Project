@@ -105,6 +105,9 @@ public class LigaSOAP {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		} catch (Exception e) {
+			// fallo de archivo no encontrado
+			return false;
 		}
 	}
 	
@@ -123,6 +126,9 @@ public class LigaSOAP {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return 0;
+		} catch (Exception e) {
+			// fallo de archivo no encontrado
+			return 2;
 		}
 	}
 	

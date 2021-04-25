@@ -21,6 +21,9 @@ public class LigaXML {
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
 		// Creamos el JAXBMarshaller
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
+		//jaxbU.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+		//jaxbU.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
+       // jaxbU.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Leyendo un fichero
 		File XMLfile = new File("./xml/ligaPredefinida.xml");
 		// Creando el objeto
@@ -29,7 +32,7 @@ public class LigaXML {
 	}
 	
 	public void exportarLiga(String nombreArchivo) throws JAXBException {
-		String ruta = "./" + nombreArchivo + ".xml";
+		String ruta = "./xml/" + nombreArchivo + ".xml";
 		//Marshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
@@ -37,7 +40,7 @@ public class LigaXML {
 		Marshaller jaxbM = jaxbC.createMarshaller();
 		// Formateo bonito
 		jaxbM.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
-		jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
+		//jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
         jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Escribiendo en un fichero
 		File XMLfile = new File(ruta);
@@ -49,6 +52,9 @@ public class LigaXML {
 		String ruta = "./xml/" + nombreFichero;
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
+		//jaxbU.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+		//jaxbU.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
+       // jaxbU.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		File XMLfile = new File(ruta);
 		liga = (Liga) jaxbU.unmarshal(XMLfile);
 	}
@@ -64,14 +70,14 @@ public class LigaXML {
 	}
 	
 	public  void exportarEquipo(Equipo eq) throws JAXBException {
-		String ruta = "./encuentrame/" + eq.getNombre() + ".xml";
+		String ruta = "./xml/" + eq.getNombre() + ".xml";
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
 		// Creamos el JAXBMarshaller
 		Marshaller jaxbM = jaxbC.createMarshaller();
 		// Formateo bonito
 		jaxbM.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
-		//jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
+		jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Escribiendo en un fichero
 		File XMLfile = new File(ruta);
 		jaxbM.marshal(eq, XMLfile);
