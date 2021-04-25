@@ -29,7 +29,7 @@ public class LigaXML {
 	}
 	
 	public void exportarLiga(String nombreArchivo) throws JAXBException {
-		String ruta = "./xml/" + nombreArchivo + ".xml";
+		String ruta = "./" + nombreArchivo + ".xml";
 		//Marshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);

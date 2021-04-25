@@ -15,13 +15,11 @@ public class EquipoDao {
 	
 	
 	public EquipoDao(String nombre, String pais, int titulos, String entrenador, String presidente) {
-		Equipo eq = new Equipo();
 		equipo.setNombre(nombre);
 		equipo.setPais(pais);
 		equipo.setTitulos(titulos);
 		equipo.setEntrenador(entrenador);
 		equipo.setPresidente(presidente);
-		this.equipo = eq;
 	}
 	
 	public EquipoDao() {

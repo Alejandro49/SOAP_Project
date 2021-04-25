@@ -26,7 +26,7 @@ public class LigaDao {
 			for (Equipo equipo: liga.getEquipo()) {
 				EquipoDao equipoDao = new EquipoDao(equipo);
 				System.out.println(equipoDao);
-				esperar(1);
+				esperar(2);
 				}
 		}
 	}

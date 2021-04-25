@@ -188,12 +188,12 @@ public class PanelControl {
 			esperar(2);
 		} else {
 			String mensaje = "Liga exportada correctamente como archivo: \"" + nombreFichero + ".xml\"";
+			System.out.println(mensaje);
 			esperar(2);
 		}
 	}
 	
 	private void crearLiga() {  
-		LigaDao ligaDao = new LigaDao(); 
 		System.out.println("Inserte los equipos de forma manual");
 		esperar(2);
 		String respuesta = "";
@@ -213,7 +213,7 @@ public class PanelControl {
 			System.out.println("Equipo que acabas de crear:");
 			System.out.println(equipoCreado);
 			esperar(3);
-			System.out.println("Escriba \"ok\" para a�adirlo a la liga");
+			System.out.println("Escriba \"ok\" para añadirlo a la liga");
 			String confirmacion = sc2.nextLine();
 			if (confirmacion.equals("ok")) {
 				boolean insercion = ligaDao.addEquipo(equipoCreado.getEquipo());
@@ -224,12 +224,12 @@ public class PanelControl {
 				}
 				
 			}
-			System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir a�adiendo equipos ");
+			System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
 			respuesta = sc2.nextLine();
 		} while (respuesta.equals("no") == false);
 		
 		ligaSOAP.crearLiga(ligaDao.getLiga().getEquipo());
-		System.out.println("Creacion de la liga completada");
+		System.out.println("Liga creada en el servidor");
 		esperar(2);
 	}
 	
@@ -239,7 +239,7 @@ public class PanelControl {
 		do {
 			try {
 				lectorTitulos = new Scanner(System.in);
-				System.out.println("Introduce el n� de t�tulos del equipo: ");
+				System.out.println("Introduce el nº de títulos del equipo: ");
 				titulos = lectorTitulos.nextInt();
 			} catch (InputMismatchException ime){
 				System.out.println("Debes introducir un numero entero carapan, no veas lo que cuesta gestionar excepciones...");
