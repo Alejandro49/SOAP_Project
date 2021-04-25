@@ -64,7 +64,7 @@ public class LigaXML {
 	}
 	
 	public  void exportarEquipo(Equipo eq) throws JAXBException {
-		String ruta = "./xml/" + eq.getNombre() + ".xml";
+		String ruta = "./encuentrame/" + eq.getNombre() + ".xml";
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
 		// Creamos el JAXBMarshaller
