@@ -136,7 +136,7 @@ public class LigaSOAP {
 	@WebMethod (operationName = "inicializarLigaPredefinida")
 	public Liga cargarLigaPredefinida() {
 		try {
-			ligaXML.importarLigaPredefinida();
+			ligaXML.cargarLigaPredefinida();
 			return ligaXML.getLiga();
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block

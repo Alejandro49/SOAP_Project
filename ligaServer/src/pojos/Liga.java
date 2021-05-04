@@ -34,6 +34,16 @@ public class Liga implements Serializable{
 		}
 	}
 	
+	public void addEquipos(Equipo...equipos) {
+		for (Equipo eq: equipos) {
+			if(liga.contains(eq)) {
+				
+			} else {
+				liga.add(eq);
+			}
+		}
+	}
+	
 	//devuelve true si el equipo estaba en la liga y se ha borrado. Devuelve false si el equipo no estaba en la liga y por lo tanto, la lista no ha cambiado.
 	public boolean removeEquipo(String nombreEquipo) {  //
 		Equipo equipo = new Equipo(nombreEquipo);

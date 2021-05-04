@@ -15,20 +15,14 @@ public class LigaXML {
 	
 	private Liga liga = new Liga();
 	
-	public void importarLigaPredefinida() throws JAXBException {
-		//unMarshalling()
-		// Creamos el JAXBContext
-		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
-		// Creamos el JAXBMarshaller
-		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
-		//jaxbU.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
-		//jaxbU.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
-       // jaxbU.setProperty("com.sun.xml.bind.xmlDeclaration", false);
-		// Leyendo un fichero
-		File XMLfile = new File("./xml/ligaPredefinida.xml");
-		// Creando el objeto
-		liga = (Liga) jaxbU.unmarshal(XMLfile);
-		// Escribiendo por pantalla el objeto
+	public void cargarLigaPredefinida() throws JAXBException {
+		
+		Equipo eq1 = new Equipo("Real Madrid", "España", 92, "Zinedine Zidane", "Florentino Pérez");
+		Equipo eq2 = new Equipo("Paris Saint-Germain", "Francia", 42, "Mauricio Pochettino", "Nasser Al-Khelaïfi");
+		Equipo eq3 = new Equipo("Sevilla FC", "España", 14, "Julen Lopetegui", "José Castro Carmona");
+		Equipo eq4 = new Equipo("Chelsea FC", "Inglaterra", 33, "Thomas Tuchel", "Bruce Buck");
+		
+		liga.addEquipos(eq1, eq2, eq3, eq4);
 	}
 	
 	public void exportarLiga(String nombreArchivo) throws JAXBException {
