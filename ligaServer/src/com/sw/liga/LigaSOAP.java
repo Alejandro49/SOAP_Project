@@ -1,11 +1,13 @@
 package com.sw.liga;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.JAXBException;
+
 
 import pojos.Equipo;
 import pojos.Liga;
@@ -17,7 +19,6 @@ import xml.LigaXML;
 public class LigaSOAP {
 	
 	LigaXML ligaXML = new LigaXML();
-	
 	
 	
 	@WebMethod (operationName = "crearLiga")
@@ -149,6 +150,19 @@ public class LigaSOAP {
 	public String validarLigaConDTD(@WebParam(name = "nombreFichero") String nombreFichero) {
 		CheckDTD checker = new CheckDTD();
 		return checker.validarLiga(nombreFichero);
+	}
+	
+	@WebMethod (operationName = "crearCarpeta")
+	public boolean crearCarpeta() {
+		String ruta = System.getProperty("user.home");
+		ruta = ruta + "/ligaSW2/";
+		ligaXML.setRuta(ruta);
+		File directorio = new File(ruta);
+		   if (!directorio.exists()) {
+			   return directorio.mkdir();
+		   } else {
+			   return true;
+		   }
 	}
 	
 	

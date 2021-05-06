@@ -30,6 +30,8 @@ public class ObjectFactory {
     private final static QName _AnadirEquipoResponse_QNAME = new QName("http://liga.sw.com/", "anadirEquipoResponse");
     private final static QName _BorrarEquipo_QNAME = new QName("http://liga.sw.com/", "borrarEquipo");
     private final static QName _BorrarEquipoResponse_QNAME = new QName("http://liga.sw.com/", "borrarEquipoResponse");
+    private final static QName _CrearCarpeta_QNAME = new QName("http://liga.sw.com/", "crearCarpeta");
+    private final static QName _CrearCarpetaResponse_QNAME = new QName("http://liga.sw.com/", "crearCarpetaResponse");
     private final static QName _CrearLiga_QNAME = new QName("http://liga.sw.com/", "crearLiga");
     private final static QName _CrearLigaResponse_QNAME = new QName("http://liga.sw.com/", "crearLigaResponse");
     private final static QName _ExportarEquipo_QNAME = new QName("http://liga.sw.com/", "exportarEquipo");
@@ -102,6 +104,22 @@ public class ObjectFactory {
      */
     public BorrarEquipoResponse createBorrarEquipoResponse() {
         return new BorrarEquipoResponse();
+    }
+
+    /**
+     * Create an instance of {@link CrearCarpeta }
+     * 
+     */
+    public CrearCarpeta createCrearCarpeta() {
+        return new CrearCarpeta();
+    }
+
+    /**
+     * Create an instance of {@link CrearCarpetaResponse }
+     * 
+     */
+    public CrearCarpetaResponse createCrearCarpetaResponse() {
+        return new CrearCarpetaResponse();
     }
 
     /**
@@ -324,6 +342,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://liga.sw.com/", name = "borrarEquipoResponse")
     public JAXBElement<BorrarEquipoResponse> createBorrarEquipoResponse(BorrarEquipoResponse value) {
         return new JAXBElement<BorrarEquipoResponse>(_BorrarEquipoResponse_QNAME, BorrarEquipoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearCarpeta }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CrearCarpeta }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearCarpeta")
+    public JAXBElement<CrearCarpeta> createCrearCarpeta(CrearCarpeta value) {
+        return new JAXBElement<CrearCarpeta>(_CrearCarpeta_QNAME, CrearCarpeta.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearCarpetaResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CrearCarpetaResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://liga.sw.com/", name = "crearCarpetaResponse")
+    public JAXBElement<CrearCarpetaResponse> createCrearCarpetaResponse(CrearCarpetaResponse value) {
+        return new JAXBElement<CrearCarpetaResponse>(_CrearCarpetaResponse_QNAME, CrearCarpetaResponse.class, null, value);
     }
 
     /**

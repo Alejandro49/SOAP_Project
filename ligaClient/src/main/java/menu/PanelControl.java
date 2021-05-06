@@ -40,6 +40,7 @@ public class PanelControl {
 	public void cargarPanel() { //sc1
 		
 		ligaSOAP = servicio.getLigaSOAPPort();
+		ligaSOAP.crearCarpeta();
 		
 		System.out.println("¿Que desea hacer?");
 		System.out.println("1.- Cargar Liga Predefinida");
@@ -51,8 +52,7 @@ public class PanelControl {
 		System.out.println("7.- Borrar equipo de la liga");
 		System.out.println("8.- Importar Equipo desde xml");
 		System.out.println("9.- Exportar equipo a xml");
-		System.out.println("10.- Validar liga con DTD");
-		System.out.println("11.- Salir");
+		System.out.println("10.- Salir");
 		System.out.println();
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
 		
@@ -66,7 +66,7 @@ public class PanelControl {
 			esperar(2);
 		}
 		
-		if (opcion>0 && opcion<12) {
+		if (opcion>0 && opcion<11) {
 			ejecutarOpcion(opcion);
 		} else {
 			System.out.println("Opci�n incorrecta. Vuelva a intentarlo");
@@ -133,9 +133,6 @@ public class PanelControl {
 			exportarEquipo();
 		break;
 		case 10:
-			validarLigaConDTD();
-		break;
-		case 11:
 			System.out.println("¡Hasta pronto!");
 			esperar(2);
 			System.exit(0);

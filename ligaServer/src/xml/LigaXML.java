@@ -14,6 +14,7 @@ import pojos.Liga;
 public class LigaXML {
 	
 	private Liga liga = new Liga();
+	private String ruta = "";
 	
 	public void cargarLigaPredefinida() throws JAXBException {
 		
@@ -26,7 +27,7 @@ public class LigaXML {
 	}
 	
 	public void exportarLiga(String nombreArchivo) throws JAXBException {
-		String ruta = "./xml/" + nombreArchivo + ".xml";
+		String ruta = this.ruta + nombreArchivo + ".xml";
 		//Marshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
@@ -43,7 +44,7 @@ public class LigaXML {
 	}
 	
 	public void importarLiga(String nombreFichero) throws JAXBException {
-		String ruta = "./xml/" + nombreFichero;
+		String ruta = this.ruta + nombreFichero;
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
 		//jaxbU.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
@@ -54,7 +55,7 @@ public class LigaXML {
 	}
 	
 	public boolean importarEquipo(String nombreFichero) throws JAXBException {
-		String ruta = "./xml/" + nombreFichero;
+		String ruta = this.ruta + nombreFichero;
 		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
 		File XMLfile = new File(ruta);
@@ -64,7 +65,7 @@ public class LigaXML {
 	}
 	
 	public  void exportarEquipo(Equipo eq) throws JAXBException {
-		String ruta = "./xml/" + eq.getNombre() + ".xml";
+		String ruta = this.ruta + eq.getNombre() + ".xml";
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
 		// Creamos el JAXBMarshaller
@@ -87,6 +88,16 @@ public class LigaXML {
 	public void setLiga(Liga liga) {
 		this.liga = liga;
 	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+	
+	
 	
 	
 	

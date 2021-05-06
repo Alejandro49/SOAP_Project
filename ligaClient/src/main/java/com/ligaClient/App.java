@@ -1,5 +1,8 @@
 package com.ligaClient;
 
+import com.client.generated.LigaSOAP;
+import com.client.generated.LigaSOAP_Service;
+
 import menu.PanelControl;
 
 public class App {
@@ -11,7 +14,7 @@ public class App {
     	System.out.println("Bienvenido a la Superliga... cargando panel de control");
 		esperar(3);
 		panel.cargarPanel();
-        
+    	
     }
     
     public static void esperar(int segundos){
